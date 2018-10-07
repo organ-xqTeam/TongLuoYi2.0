@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 会员使用统计 -->
+<mapper namespace="com.tly.dao.IUserStatisticsDao">
+
+	<!-- 根据用户id查询使用次数 -->
+	<select id="selectUseSumByMid" parameterType="int" resultType="java.lang.Integer">
+		select count(mid) from UserStatistics where mid = #{mid}
+	</select>
+	<!-- 查询会员使用 -->
+	<select id="selectByUs" parameterType="java.lang.Integer" resultType="java.util.HashMap">
+		select * from userstatistics as us 
+			left join equipmentsublist as es on us.eid = es.id
+			where us.mid = #{mid}
+	</select>
+</mapper>

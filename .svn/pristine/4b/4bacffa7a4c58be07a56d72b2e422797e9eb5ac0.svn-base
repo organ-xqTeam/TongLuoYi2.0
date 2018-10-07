@@ -1,0 +1,52 @@
+package com.tly.dao.impl;
+
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+
+import org.mybatis.spring.support.SqlSessionDaoSupport;
+
+import com.tly.dao.IUserStatisticsDao;
+import com.tly.model.UserStatistics;
+
+public class UserStatisticsDao extends SqlSessionDaoSupport implements IUserStatisticsDao{
+
+	@Override
+	public Integer selectUseSumByMid(int mid) {
+		Integer sum = getSqlSession().selectOne("com.tly.dao.IUserStatisticsDao.selectUseSumByMid",mid);
+		return sum;
+	}
+
+	/**
+	 * 查询会员使用
+	 * yangweihang
+	 * @Date 2018年8月26日 下午4:16:55
+	 * @param mid
+	 * @return
+	 */
+	@Override
+	public List<Map<String,Object>> selectByUs(int mid) {
+		return getSqlSession().selectList("com.tly.dao.IUserStatisticsDao.selectByUs", mid);
+	}
+
+	@Override
+	public Integer insert(UserStatistics ust) {
+		// TODO Auto-generated method stub
+		Integer insert = getSqlSession().insert("com.tly.dao.IUserStatisticsDao.insert",ust);//1.成功 0.不成功
+		return insert;
+	}
+
+	@Override
+	public Integer selectUsidByWxidAndFirstTime(String wxid) {
+		// TODO Auto-generated method stub
+		Integer usid = getSqlSession().selectOne("com.tly.dao.IUserStatisticsDao.selectUsidByWxidAndFirstTime", wxid);
+		return usid;
+	}
+
+	@Override
+	public Map selectSumuserstatistics(String wxid) {
+		// TODO Auto-generated method stub
+		Map map = getSqlSession().selectOne("com.tly.dao.IUserStatisticsDao.selectSumuserstatistics",wxid);
+		return map;
+	}
+}

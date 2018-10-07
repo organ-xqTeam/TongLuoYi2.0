@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 会员合伙人提成奖励对应表 -->
+<mapper namespace="com.tly.dao.ICommissionrewardDao">
+	<!-- 查询奖励对应 -->
+	<select id="selectByC" resultType="com.tly.model.Commissionreward">
+		select * from commissionreward
+	</select>
+</mapper>

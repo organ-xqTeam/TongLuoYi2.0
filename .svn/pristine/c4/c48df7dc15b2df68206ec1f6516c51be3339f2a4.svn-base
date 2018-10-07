@@ -1,0 +1,17 @@
+package com.tly.dao;
+
+/**
+ * @author moxiuchuan
+ * 会员dao
+ * 11点33分
+ */
+public interface IMemberDao {
+
+	/**
+	 * 根据手机号查询一个会员id
+	 * @param phonenum
+	 * @return 会员id
+	 */
+	Integer selectOneByPhone(String phonenum);
+	
+}

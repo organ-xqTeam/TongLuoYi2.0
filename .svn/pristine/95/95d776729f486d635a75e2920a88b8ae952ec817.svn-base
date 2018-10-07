@@ -1,0 +1,31 @@
+package com.tly.dao;
+
+import java.util.List;
+import java.util.Map;
+
+import com.tly.model.Shop;
+
+/**
+ * 附近店铺管理
+ * @ClassName IShopDao
+ * @Author yangweihang
+ * @Date 2018年8月26日 下午1:07:47
+ */
+public interface IShopDao {
+	
+	/**
+	 * 查询店铺
+	 * yangweihang
+	 * @Date 2018年8月26日 下午1:08:36
+	 * @return
+	 */
+	List<Shop> selectByShop();
+
+	/**
+	 * 
+	 * @param map
+	 * @return
+	 */
+	List<Map> selectNearby(Map map);
+	
+}	

@@ -1,0 +1,139 @@
+package com.tly.controller;
+
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.tly.model.Member;
+import com.tly.model.Partner;
+import com.tly.service.IMemberService;
+import com.tly.service.IPartnerService;
+import com.tly.util.RoleUtil;
+import com.tly.util.StringTools;
+
+/**
+ * 合伙人
+ * @ClassName PartnerController
+ * @Author yangweihang
+ * @Date 2018年8月26日 下午5:22:11
+ */
+@Controller
+@RequestMapping("/partner")
+public class PartnerController {
+
+	@Autowired
+	private IPartnerService ips;
+	
+	@Autowired
+	private IMemberService ims;
+	
+	@Autowired
+	private HttpServletRequest request;
+	
+	/**
+	 * 合伙人管理
+	 * yangweihang
+	 * @Date 2018年8月26日 下午5:23:58
+	 * @return
+	 */
+	@RequestMapping("/selectByPartner")
+	public String selectByPartner(){
+		StringTools st = StringTools.getFactory();
+		List<Map<String, Object>> list = ips.selectByPartner();
+		for(Map<String,Object> m : list){
+			//合伙人级别
+			if(!st.isNull(m.get("plid"))) {
+				String plid = RoleUtil.partnerlevel((int)m.get("plid"));
+				m.replace("plid", plid);
+			}
+		}
+		request.setAttribute("list", list);
+		return "partner/manage";
+	}
+	
+	/**
+	 * 查询一级上线
+	 * yangweihang
+	 * @Date 2018年8月26日 下午3:11:24
+	 * @param wxid
+	 * @return
+	 */
+	@RequestMapping("/onone")
+	public String selectonone(String wxid) {
+		Member m = ims.selectonone(wxid);
+		Partner p = ips.selectonone(wxid);
+		if(m != null){
+			request.setAttribute("m", m);
+		}else if(p != null){
+			request.setAttribute("p", p);
+		}
+		return "member/onmember";
+	}
+
+
+	/**
+	 * 查询二级上线
+	 * yangweihang
+	 * @Date 2018年8月26日 下午3:11:35
+	 * @param wxid
+	 * @return
+	 */
+	@RequestMapping("/ontwo")
+	public String selectontwo(String wxid) {
+		Member m = ims.selectontwo(wxid);
+		Partner p = ips.selectontwo(wxid);
+		if(m != null){
+			request.setAttribute("m", m);
+		}else if(p != null){
+			request.setAttribute("p", p);
+		}
+		request.setAttribute("m", m);
+		return "member/onmember";
+	}
+
+
+	/**
+	 * 查询一级下线
+	 * yangweihang
+	 * @Date 2018年8月26日 下午3:11:46
+	 * @param wxid
+	 * @return
+	 */
+	@RequestMapping("/upone")
+	public String selectupone(String wxid) {
+		 List<Member> mlist = ims.selectupone(wxid);
+		 List<Partner> plist = ips.selectupone(wxid);
+		 if(mlist != null && !mlist.isEmpty()){
+			 request.setAttribute("list", mlist);
+		 }else if(plist != null && !plist.isEmpty()){
+			 request.setAttribute("list", plist);
+		 }
+		 return "member/upmember";
+	}
+
+
+	/**
+	 * 查询二级下线
+	 * yangweihang
+	 * @Date 2018年8月26日 下午3:11:59
+	 * @param wxid
+	 * @return
+	 */
+	@RequestMapping("/uptwo")
+	public String selectuptwo(String wxid) {
+		 List<Member> mlist = ims.selectuptwo(wxid);
+		 List<Partner> plist = ips.selectuptwo(wxid);
+		 if(mlist != null && !mlist.isEmpty()){
+			 request.setAttribute("list", mlist);
+		 }else if(plist != null && !plist.isEmpty()){
+			 request.setAttribute("list", plist);
+		 }
+		 return "member/upmember";
+	}
+	
+}

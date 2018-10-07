@@ -1,0 +1,35 @@
+package com.tly.model;
+
+
+/**
+ * 会员级别
+ * @ClassName MemberLevel
+ * @Author yangweihang
+ * @Date 2018年8月24日 上午11:24:49
+ */
+public class MemberLevel {
+	private Integer id;//id
+	private String name;//会员级别 	1.普通、2.金牌、3.钻石、4.超级
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public MemberLevel() {
+	}
+	public MemberLevel(Integer id, String name) {
+		this.id = id;
+		this.name = name;
+	}
+	@Override
+	public String toString() {
+		return "MemberLevel [id=" + id + ", name=" + name + "]";
+	}
+}

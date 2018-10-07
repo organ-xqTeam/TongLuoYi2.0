@@ -1,0 +1,42 @@
+package com.tly.controller;
+
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.tly.model.Shop;
+import com.tly.service.IShopService;
+
+/**
+ * 店铺管理
+ * @ClassName ShopController
+ * @Author yangweihang
+ * @Date 2018年8月26日 下午1:15:51
+ */
+@Controller
+@RequestMapping("/shop")
+public class ShopController {
+	
+	@Autowired
+	private IShopService iss;
+	
+	@Autowired
+	private HttpServletRequest request;
+	
+	/**
+	 * 查询店铺
+	 * yangweihang
+	 * @Date 2018年8月26日 下午1:18:29
+	 * @return
+	 */
+	@RequestMapping("/selectbyshop")
+	public String selectByShop(){
+		List<Shop> list = iss.selectByShop();
+		request.setAttribute("list", list);
+		return "shop/manage";
+	}
+}

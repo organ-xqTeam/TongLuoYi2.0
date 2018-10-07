@@ -1,0 +1,45 @@
+package com.tly.controller;
+
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.tly.model.UserStatistics;
+import com.tly.service.IUserStatisticsService;
+
+/**
+ * 会员使用统计
+ * @ClassName UserStatisticsController
+ * @Author yangweihang
+ * @Date 2018年8月26日 下午4:24:29
+ */
+@Controller
+@RequestMapping("/userstatistics")
+public class UserStatisticsController {
+	
+	@Autowired
+	private IUserStatisticsService iuss;
+	
+	@Autowired
+	private HttpServletRequest request;
+	
+	/**
+	 * 查询会员使用统计
+	 * yangweihang
+	 * @Date 2018年8月26日 下午4:27:42
+	 * @param mid
+	 * @return
+	 */
+	@RequestMapping("/selectbyus")
+	public String selectByUs(int mid){
+		List<Map<String, Object>> list = iuss.selectByUs(mid);
+		request.setAttribute("list", list);
+		return "userstatistics/manage";
+	}
+	
+}

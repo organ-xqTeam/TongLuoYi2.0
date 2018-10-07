@@ -1,0 +1,15 @@
+package com.tly.dao;
+
+/**
+ * 会员使用统计dao接口
+ * @author moxiuchuan
+ * 17点48分
+ */
+public interface IUserStatisticsDao {
+	/**
+	 * 查询码该会员的使用次数，用来判断他的体验资格到了没
+	 * @param mid
+	 * @return 使用次数
+	 */
+	Integer selectUseSumByMid(int mid);
+}

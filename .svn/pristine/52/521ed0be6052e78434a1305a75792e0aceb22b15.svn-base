@@ -1,0 +1,66 @@
+package com.tly.util;
+
+/**
+ * 产品工具类
+ * @ClassName ProductUtil
+ * @Author yangweihang
+ * @Date 2018年8月25日 上午11:46:44
+ */
+public class ProductUtil {
+	
+	public static final int ONE = 1;
+	
+	public static final int TWO = 2;
+	
+	public static final int THREE = 3;
+	
+	public static final int FOUR = 4;
+	
+	
+	/**
+	 * 产品状态
+	 * yangweihang
+	 * @Date 2018年8月25日 上午11:46:35
+	 * @param key
+	 * @return
+	 */
+	public static String prostatus(int key) {
+		String str = "";
+		switch (key) {
+		case ONE:
+			str = "入库";
+			break;
+		case TWO:
+			str = "出库";
+			break;
+		case THREE:
+			str = "报废";
+			break;
+		}
+		return str;
+	}
+	
+	/**
+	 * 设备来源
+	 * yangweihang
+	 * @Date 2018年8月25日 上午11:50:06
+	 * @param key
+	 * @return
+	 */
+	public static String prosource(int key) {
+		String str = "";
+		switch (key) {
+		case ONE:
+			str = "新品";
+			break;
+		case TWO:
+			str = "退租";
+			break;
+		case THREE:
+			str = "修复";
+			break;
+		}
+		return str;
+	}
+	
+}

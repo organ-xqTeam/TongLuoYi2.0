@@ -1,0 +1,51 @@
+package com.tly.dao;
+
+import java.util.List;
+import java.util.Map;
+
+import com.tly.model.Equipment;
+
+
+/**
+ * 设备
+ * @ClassName IEquipmentDao
+ * @Author yangweihang
+ * @Date 2018年8月24日 上午11:22:31
+ */
+public interface IEquipmentDao {
+	/**
+	 * 新增
+	 * yangweihang
+	 * @Date 2018年8月24日 上午11:22:42
+	 * @param e
+	 * @return
+	 */
+	public int insert(Equipment e);
+	
+	/**
+	 * 按设备型号查询
+	 * yangweihang
+	 * @Date 2018年8月24日 下午4:35:57
+	 * @param map
+	 * @return
+	 */
+	public Equipment selectByCondition(Map<String,Object> map);
+	
+	/**
+	 * 查询设备名称
+	 * yangweihang
+	 * @Date 2018年8月25日 上午9:17:30
+	 * @return
+	 */
+	List<String> selectEByName();
+	
+	/**
+	 * 按设备名称查询
+	 * yangweihang
+	 * @Date 2018年8月25日 上午9:59:57
+	 * @param map
+	 * @return
+	 */
+	public List<Equipment> selectEByType(Map<String,Object> map);
+	
+}

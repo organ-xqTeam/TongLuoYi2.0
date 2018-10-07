@@ -1,0 +1,39 @@
+package com.tly.service.impl;
+
+import java.util.List;
+import java.util.Map;
+
+import com.tly.dao.IUserStatisticsDao;
+import com.tly.service.IUserStatisticsService;
+
+/**
+ * 会员使用统计
+ * @ClassName UserStatisticsService
+ * @Author yangweihang
+ * @Date 2018年8月26日 下午4:19:37
+ */
+public class UserStatisticsService implements IUserStatisticsService {
+	
+	private IUserStatisticsDao iusdao;
+
+	public IUserStatisticsDao getIusdao() {
+		return iusdao;
+	}
+
+	public void setIusdao(IUserStatisticsDao iusdao) {
+		this.iusdao = iusdao;
+	}
+
+	/**
+	 * 查询会员使用
+	 * yangweihang
+	 * @Date 2018年8月26日 下午4:23:21
+	 * @param mid
+	 * @return
+	 */
+	@Override
+	public List<Map<String,Object>> selectByUs(int mid) {
+		return iusdao.selectByUs(mid);
+	}
+	
+}

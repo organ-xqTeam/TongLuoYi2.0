@@ -1,0 +1,29 @@
+package com.tly.dao.impl;
+
+import java.util.List;
+import java.util.Map;
+
+import org.mybatis.spring.support.SqlSessionDaoSupport;
+
+import com.tly.dao.IUserStatisticsDao;
+
+public class UserStatisticsDao extends SqlSessionDaoSupport implements IUserStatisticsDao{
+
+	@Override
+	public Integer selectUseSumByMid(int mid) {
+		Integer sum = getSqlSession().selectOne("com.tly.dao.IUserStatisticsDao.selectUseSumByMid",mid);
+		return sum;
+	}
+
+	/**
+	 * 查询会员使用
+	 * yangweihang
+	 * @Date 2018年8月26日 下午4:16:55
+	 * @param mid
+	 * @return
+	 */
+	@Override
+	public List<Map<String,Object>> selectByUs(int mid) {
+		return getSqlSession().selectList("com.tly.dao.IUserStatisticsDao.selectByUs", mid);
+	}
+}

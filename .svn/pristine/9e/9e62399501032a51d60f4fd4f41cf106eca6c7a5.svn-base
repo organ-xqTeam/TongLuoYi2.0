@@ -1,0 +1,68 @@
+package com.tly.model;
+
+import java.util.Date;
+
+/**
+ * 会员使用统计
+ * @author lenovo
+ *
+ */
+public class UserStatistics {
+	private Integer id;//id
+	private Integer mid;//会员id
+	private Integer eid;//设备id
+	private Date starttime;//开机时间
+	private Date utilitytime;//使用时长
+	private Double money;//价格
+	public UserStatistics() {
+	}
+	public UserStatistics(Integer id, Integer mid, Integer eid, Date starttime, Date utilitytime, Double money) {
+		this.id = id;
+		this.mid = mid;
+		this.eid = eid;
+		this.starttime = starttime;
+		this.utilitytime = utilitytime;
+		this.money = money;
+	}
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	public Integer getMid() {
+		return mid;
+	}
+	public void setMid(Integer mid) {
+		this.mid = mid;
+	}
+	public Integer getEid() {
+		return eid;
+	}
+	public void setEid(Integer eid) {
+		this.eid = eid;
+	}
+	public Date getStarttime() {
+		return starttime;
+	}
+	public void setStarttime(Date starttime) {
+		this.starttime = starttime;
+	}
+	public Date getUtilitytime() {
+		return utilitytime;
+	}
+	public void setUtilitytime(Date utilitytime) {
+		this.utilitytime = utilitytime;
+	}
+	public Double getMoney() {
+		return money;
+	}
+	public void setMoney(Double money) {
+		this.money = money;
+	}
+	@Override
+	public String toString() {
+		return "UserStatistics [id=" + id + ", mid=" + mid + ", eid=" + eid + ", starttime=" + starttime
+				+ ", utilitytime=" + utilitytime + ", money=" + money + "]";
+	}
+}

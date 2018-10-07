@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+     xsi:schemaLocation="
+     http://www.springframework.org/schema/beans 
+	 http://www.springframework.org/schema/beans/spring-beans-4.2.xsd">
+	
+	<import resource="applicationContext.xml"/>
+	
+	<!-- 会员 -->
+	<bean id="imdao" class="com.tly.dao.impl.MemberDao">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+	<!-- 会员钱包 -->
+	<bean id="imwdao" class="com.tly.dao.impl.MemberWalletDao">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+	<!-- 会员上下级对应 -->
+	<bean id="imouldao" class="com.tly.dao.impl.MemberonupLevelDao">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+	<!-- 会员级别 -->
+	<bean id="imldao" class="com.tly.dao.impl.MemberLevelDao">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+	<!-- 会员使用 -->
+	<bean id="iusdao" class="com.tly.dao.impl.UserStatisticsDao">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+</beans>

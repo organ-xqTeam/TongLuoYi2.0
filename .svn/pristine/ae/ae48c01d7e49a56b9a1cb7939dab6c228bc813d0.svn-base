@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 合伙人设备对应 -->
+<mapper namespace="com.tly.dao.IPartnerEquipmentDao">
+	<!-- 查询合伙人设备 -->
+	<select id="selectByPe" parameterType="java.lang.Integer" resultType="java.util.HashMap">
+		select e.type as type,es.number as number,pe.form as form,pe.status as status,ei.outtime as outtime,pe.time as time
+		 	from equipment as e
+			left join equipmentsublist as es on e.id = es.eid
+			left join equipmentinoutstorage as ei on ei.number = es.number
+			left join partnerequipment as pe on es.id = pe.eid
+			where pe.pid = #{pid}
+	</select>
+	
+	<select id="selectEquipmentForm" parameterType="java.lang.String" resultType="java.lang.Integer">
+		select form from partnerequipment where eid = (select id from equipmentsublist where number = #{equipmentnumber}) 
+	</select>
+	
+	<!-- 按设备编号查询 -->
+	<select id="selectByNumber" parameterType="java.lang.String" resultType="com.tly.model.PartnerEquipment">
+		select pe.*
+		from equipmentsublist as es 
+		left join partnerequipment as pe on pe.eid = es.id
+		left join partner as p on p.id = pe.pid
+		where es.number = #{number}
+	</select>
+	
+	<!-- 根据设备子表id查询设备的扫码价格 -->
+	<select id="selectSmoneyByEid" parameterType="java.lang.Integer" resultType="java.lang.Double">
+		select smoney from partnerequipment where eid = #{eid}
+	</select>
+	
+	<!-- 按店铺管理员微信id查询设备 -->
+	<select id="selectwxidByEs" parameterType="java.lang.String" resultType="java.util.HashMap">
+		select * 
+		from equipmentsublist as es 
+		left join partnerequipment as pe on es.id = pe.eid
+		left join shop as s on s.pid = pe.pid
+		left join administrator as a on a.sid = s.sid
+		where a.wxid = #{wxid}
+	</select>
+</mapper>

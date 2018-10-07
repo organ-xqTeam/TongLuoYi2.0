@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 设备子表 -->
+<mapper namespace="com.tly.dao.IEquipmentSublistDao">
+	
+	<!-- 根据设备码查询设备状态 -->
+	<select id="selectStateByEquipmentnumber" parameterType="java.lang.String" resultType="java.lang.Integer">
+		select 
+	</select>
+</mapper>

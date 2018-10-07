@@ -1,0 +1,22 @@
+package com.tly.dao;
+
+import com.tly.model.Equipment;
+
+
+/**
+ * 设备
+ * @ClassName IEquipmentDao
+ * @Author yangweihang
+ * @Date 2018年8月24日 上午11:22:31
+ */
+public interface IEquipmentDao {
+	/**
+	 * 新增
+	 * yangweihang
+	 * @Date 2018年8月24日 上午11:22:42
+	 * @param e
+	 * @return
+	 */
+	public int insert(Equipment e);
+	
+}

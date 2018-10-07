@@ -1,0 +1,33 @@
+package com.tly.service;
+
+import java.util.Map;
+
+import com.tly.model.EquipmentSublist;
+
+/**
+ * 设备子表
+ * @ClassName IEquipmentSublistService
+ * @Author yangweihang
+ * @Date 2018年8月25日 上午9:22:19
+ */
+public interface IEquipmentSublistService {
+	
+	/**
+	 * 新增产品
+	 * yangweihang
+	 * @Date 2018年8月25日 上午11:03:04
+	 * @param es
+	 * @return
+	 */
+	int insertes(EquipmentSublist es);
+	
+	/**
+	 * 查询设备编号
+	 * yangweihang
+	 * @Date 2018年8月25日 上午11:13:30
+	 * @param map
+	 * @return
+	 */
+	EquipmentSublist selectByNumber(Map<String,Object> map);
+	
+}

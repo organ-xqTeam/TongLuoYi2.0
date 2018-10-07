@@ -1,0 +1,74 @@
+package com.tly.service.impl;
+
+import java.util.List;
+import java.util.Map;
+
+import com.tly.dao.IEquipmentDao;
+import com.tly.model.Equipment;
+import com.tly.service.IEquipmentService;
+
+/**
+ * 设备
+ * @ClassName EquipmentService
+ * @Author yangweihang
+ * @Date 2018年8月24日 上午11:35:19
+ */
+public class EquipmentService implements IEquipmentService {
+
+	private IEquipmentDao iedao;
+	
+	public IEquipmentDao getIedao() {
+		return iedao;
+	}
+	
+	public void setIedao(IEquipmentDao iedao) {
+		this.iedao = iedao;
+	}
+	
+	/**
+	 * 新增设备
+	 * yangweihang
+	 * @Date 2018年8月24日 上午11:35:54
+	 * @param e
+	 * @return
+	 */
+	@Override
+	public int insert(Equipment e) {
+		return iedao.insert(e);
+	}
+
+	/**
+	 * 按设备型号查询
+	 * yangweihang
+	 * @Date 2018年8月24日 下午4:41:47
+	 * @param map
+	 * @return
+	 */
+	@Override
+	public Equipment selectByCondition(Map<String,Object> map) {
+		return iedao.selectByCondition(map);
+	}
+	
+	/**
+	 * 查询设备名称
+	 * yangweihang
+	 * @Date 2018年8月25日 上午9:24:26
+	 * @return
+	 */
+	@Override
+	public List<String> selectEByName() {
+		return iedao.selectEByName();
+	}
+
+	/**
+	 * 按设备名称查询
+	 * yangweihang
+	 * @Date 2018年8月25日 上午10:02:48
+	 * @param map
+	 * @return
+	 */
+	@Override
+	public List<Equipment> selectEByType(Map<String, Object> map) {
+		return iedao.selectEByType(map);
+	}
+}

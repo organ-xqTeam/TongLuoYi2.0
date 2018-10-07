@@ -1,0 +1,55 @@
+package com.tly.service.impl;
+
+import com.tly.dao.IEquipmentDao;
+import com.tly.dao.IEquipmentSublistDao;
+import com.tly.model.Equipment;
+import com.tly.service.IEquipmentService;
+
+/**
+ * 设备
+ * @ClassName EquipmentService
+ * @Author yangweihang
+ * @Date 2018年8月24日 上午11:35:19
+ */
+public class EquipmentService implements IEquipmentService {
+
+	private IEquipmentDao iedao;
+	
+	private IEquipmentSublistDao iesdao;//设备子表
+	
+	/**
+	 * 新增设备
+	 * yangweihang
+	 * @Date 2018年8月24日 上午11:35:54
+	 * @param e
+	 * @return
+	 */
+	@Override
+	public int insert(Equipment e) {
+		return iedao.insert(e);
+	}
+
+	public IEquipmentDao getIedao() {
+		return iedao;
+	}
+
+	public void setIedao(IEquipmentDao iedao) {
+		this.iedao = iedao;
+	}
+
+	public IEquipmentSublistDao getIesdao() {
+		return iesdao;
+	}
+
+	public void setIesdao(IEquipmentSublistDao iesdao) {
+		this.iesdao = iesdao;
+	}
+
+	@Override
+	public Integer selectStateByEquipmentnumber(String Equipmentnumber) {
+		// TODO Auto-generated method stub
+		Integer state = iesdao.selectStateByEquipmentnumber(Equipmentnumber);
+		return state;
+	}
+	
+}

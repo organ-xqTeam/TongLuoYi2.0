@@ -1,0 +1,23 @@
+package com.tly.service;
+
+import java.util.List;
+import java.util.Map;
+
+/**
+ * 会员使用
+ * @ClassName IUserStatisticsService
+ * @Author yangweihang
+ * @Date 2018年8月26日 下午4:18:23
+ */
+public interface IUserStatisticsService {
+
+	/**
+	 * 查询会员使用
+	 * yangweihang
+	 * @Date 2018年8月26日 下午4:15:32
+	 * @param mid
+	 * @return
+	 */
+	List<Map<String,Object>> selectByUs(int mid);
+	
+}

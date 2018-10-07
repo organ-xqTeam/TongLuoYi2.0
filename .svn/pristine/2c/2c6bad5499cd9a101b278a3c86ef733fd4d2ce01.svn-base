@@ -1,0 +1,7 @@
+package com.tly.util;
+
+public class MoneyUtil {
+	
+	public static final Double DEFAULT = 0.0;
+	
+}

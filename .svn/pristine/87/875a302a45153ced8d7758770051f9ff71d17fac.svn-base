@@ -1,0 +1,67 @@
+package com.tly.dao.impl;
+
+import java.util.List;
+import java.util.Map;
+
+import org.mybatis.spring.support.SqlSessionDaoSupport;
+
+import com.tly.dao.IPartnerEquipmentDao;
+import com.tly.model.PartnerEquipment;
+
+/**
+ * 合伙人设备对应
+ * @ClassName PartnerEquipmentDao
+ * @Author yangweihang
+ * @Date 2018年8月26日 下午6:11:07
+ */
+public class PartnerEquipmentDao extends SqlSessionDaoSupport implements IPartnerEquipmentDao {
+
+	/**
+	 * 查询合伙人设备
+	 * yangweihang
+	 * @Date 2018年8月26日 下午6:11:43
+	 * @param pid
+	 * @return
+	 */
+	@Override
+	public List<Map<String, Object>> selectByPe(int pid) {
+		return getSqlSession().selectList("com.tly.dao.IPartnerEquipmentDao.selectByPe", pid);
+	}
+
+	@Override
+	public Integer selectEquipmentForm(String equipmentnumber) {
+		Integer form = getSqlSession().selectOne("com.tly.dao.IPartnerEquipmentDao.selectEquipmentForm", equipmentnumber);
+		return form;
+	}
+
+	/**
+	 * 按设备编号查询
+	 * yangweihang
+	 * @Date 2018年8月28日 下午4:50:34
+	 * @param number
+	 * @return
+	 */
+	@Override
+	public PartnerEquipment selectByNumber(String number) {
+		return getSqlSession().selectOne("com.tly.dao.IPartnerEquipmentDao.selectByNumber", number);
+	}
+
+	@Override
+	public Double selectSmoneyByEid(Integer eid) {
+		Double smoney = getSqlSession().selectOne("com.tly.dao.IPartnerEquipmentDao.selectSmoneyByEid", eid);
+		return smoney;
+	}
+
+	/**
+	 * 按店铺管理员微信id查询设备
+	 * yangweihang
+	 * @Date 2018年8月29日 下午6:12:49
+	 * @param wxid
+	 * @return
+	 */
+	@Override
+	public List<Map<String, Object>> selectwxidByEs(String wxid) {
+		return getSqlSession().selectList("com.tly.dao.IPartnerEquipmentDao.selectwxidByEs", wxid);
+	}
+
+}

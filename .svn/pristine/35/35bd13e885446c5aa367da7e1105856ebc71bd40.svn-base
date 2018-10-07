@@ -1,0 +1,175 @@
+package com.tly.service.impl;
+
+import java.util.List;
+import java.util.Map;
+
+import com.tly.dao.IMemberDao;
+import com.tly.dao.IMemberonupLevelDao;
+import com.tly.dao.IPartneronupLevelDao;
+import com.tly.dao.IUserStatisticsDao;
+import com.tly.model.Member;
+import com.tly.service.IMemberService;
+
+public class MemberService implements IMemberService{
+	
+	private IMemberDao imdao;
+	
+	private IUserStatisticsDao iusdao;
+	
+	private IMemberonupLevelDao imldao;
+	
+	public IMemberonupLevelDao getImldao() {
+		return imldao;
+	}
+
+
+	public void setImldao(IMemberonupLevelDao imldao) {
+		this.imldao = imldao;
+	}
+
+
+	public IMemberDao getImdao() {
+		return imdao;
+	}
+
+
+	public void setImdao(IMemberDao imdao) {
+		this.imdao = imdao;
+	}
+
+	public IUserStatisticsDao getIusdao() {
+		return iusdao;
+	}
+
+
+	public void setIusdao(IUserStatisticsDao iusdao) {
+		this.iusdao = iusdao;
+	}
+
+
+	@Override
+	public Integer selectOneByPhone(String phonenum) {
+		Integer mid = imdao.selectOneByPhone(phonenum);
+		return mid;
+	}
+
+
+	@Override
+	public Integer selectUseSumByMid(int mid) {
+		Integer sum = iusdao.selectUseSumByMid(mid);
+		return sum;
+	}
+
+
+	/**
+	 * 会员管理
+	 * yangweihang
+	 * @Date 2018年8月26日 下午1:53:38
+	 * @return
+	 */
+	@Override
+	public List<Map<String, Object>> selectByMember() {
+		return imdao.selectByMember();
+	}
+
+
+	/**
+	 * 查询一级上线
+	 * yangweihang
+	 * @Date 2018年8月26日 下午3:11:24
+	 * @param wxid
+	 * @return
+	 */
+	@Override
+	public Member selectonone(String wxid) {
+		return imdao.selectonone(wxid);
+	}
+
+
+	/**
+	 * 查询二级上线
+	 * yangweihang
+	 * @Date 2018年8月26日 下午3:11:35
+	 * @param wxid
+	 * @return
+	 */
+	@Override
+	public Member selectontwo(String wxid) {
+		return imdao.selectontwo(wxid);
+	}
+
+
+	/**
+	 * 查询一级下线
+	 * yangweihang
+	 * @Date 2018年8月26日 下午3:11:46
+	 * @param wxid
+	 * @return
+	 */
+	@Override
+	public List<Member> selectupone(String wxid) {
+		return imdao.selectupone(wxid);
+	}
+
+
+	/**
+	 * 查询二级下线
+	 * yangweihang
+	 * @Date 2018年8月26日 下午3:11:59
+	 * @param wxid
+	 * @return
+	 */
+	@Override
+	public List<Member> selectuptwo(String wxid) {
+		return imdao.selectuptwo(wxid);
+	}
+
+
+	@Override
+	public Member selectOneMemberByWxid(String wxid) {
+		Member mem = imdao.selectOneMemberByWxid(wxid);
+		return mem;
+	}
+
+
+	/**
+	 * 按设备编号关联查询合伙人的一级上线
+	 * yangweihang
+	 * @Date 2018年8月28日 下午4:24:52
+	 * @param number
+	 * @return
+	 */
+	@Override
+	public Member selectponone(String number) {
+		return imdao.selectponone(number);
+	}
+
+
+	/**
+	 * 按设备编号关联查询合伙人二级上线
+	 * yangweihang
+	 * @Date 2018年8月28日 下午4:24:47
+	 * @param number
+	 * @return
+	 */
+	@Override
+	public Member selectpontwo(String number) {
+		return imdao.selectpontwo(number);
+	}
+
+
+	@Override
+	public List<Map> selectDownOneWxidAndType(String wxid) {
+		// TODO Auto-generated method stub
+		List<Map> list = imldao.selectDownOneWxidAndType(wxid);
+		return list;
+	}
+
+
+	@Override
+	public List<Map> selectDownOneWxidAndSumTwo(String wxid) {
+		// TODO Auto-generated method stub
+		List<Map> list = imldao.selectDownOneWxidAndSumTwo(wxid);
+		return list;
+	}
+}

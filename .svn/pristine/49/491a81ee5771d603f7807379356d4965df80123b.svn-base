@@ -1,0 +1,45 @@
+package com.tly.dao.impl;
+
+import java.util.List;
+import java.util.Map;
+
+import org.mybatis.spring.support.SqlSessionDaoSupport;
+
+import com.tly.dao.IFinanceDao;
+import com.tly.model.Finance;
+
+/**
+ * 财务管理
+ * @ClassName FinanceDao
+ * @Author yangweihang
+ * @Date 2018年8月26日 下午10:05:57
+ */
+public class FinanceDao extends SqlSessionDaoSupport implements IFinanceDao {
+
+	/**
+	 * 查询钱包明细
+	 * yangweihang
+	 * @Date 2018年8月26日 下午10:08:32
+	 * @param wxid
+	 * @return
+	 */
+	@Override
+	public List<Map<String, Object>> selectByFinance(String wxid) {
+		return getSqlSession().selectList("com.tly.dao.IFinanceDao.selectByFinance", wxid);
+	}
+
+	/**
+	 * 查询下线明细
+	 * yangweihang
+	 * @Date 2018年8月26日 下午10:57:07
+	 * @param map
+	 * @return
+	 */
+	@Override
+	public List<Finance> selectByUp(Map<String, Object> map) {
+		return getSqlSession().selectList("com.tly.dao.IFinanceDao.selectByUp", map);
+	}
+	
+	
+	
+}

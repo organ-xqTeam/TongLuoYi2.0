@@ -1,0 +1,201 @@
+package com.tly.controller;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.tly.model.Member;
+import com.tly.service.IEquipmentService;
+import com.tly.service.IMemberService;
+import com.tly.service.IPartnerService;
+import com.tly.util.ScanServer;
+import com.tly.util.YesOrNo;
+
+/**
+ * @author moxiuchuan
+ * 会员控制器
+ * 11点17分
+ */
+@Controller
+@RequestMapping("/member")
+public class MemberController {
+	
+	@Autowired
+	private HttpServletRequest request;
+	
+	@Autowired
+	private IMemberService ims;//会员服务
+	
+	@Autowired
+	private IEquipmentService ies;//设备服务
+	
+	@Autowired
+	private IPartnerService ips; //合伙人服务
+	
+	private String Equipmentnumber; //设备码
+
+	/**
+	 * 根据手机号查询会员id
+	 * @return 存在：会员id 不存在：null
+	 */
+	@RequestMapping("/selectOneByPhone")
+	@ResponseBody
+	public Integer selectOneByPhone(String phonenum) {
+		
+		Integer mid = ims.selectOneByPhone(phonenum);
+
+		return mid;
+	}
+	
+	/**
+	 * 检查他应该付多少钱
+	 * @return 钱数
+	 */
+	@RequestMapping("/selectMoneyByScan")
+	@ResponseBody
+	public Map selectMoneyByScan(String Equipmentnumber,int type,int mid) {
+		
+		Map map = new HashMap();
+		this.Equipmentnumber = Equipmentnumber;
+		//1.判断该设备的状态
+		Integer state = selectStateByEquipmentnumber();
+		if (state != 0) {
+			//2.用户的角色
+			if(type == 1){//假定维修工的类型为1，具体要统一###
+				map.put("key", "memberType");
+				map.put("value", 1);
+				return map;
+			}else{//不是维修工的时候
+				//3.判断用户使用次数
+				Integer sum = ims.selectUseSumByMid(mid);
+				System.out.println("sum:"+sum);
+				if(sum == 0){
+					map.put("key", "money");
+					map.put("value", 0);
+					return map;
+				}else if(sum == 1) {
+					map.put("key", "money");
+					map.put("value", 1);
+					return map;
+				}else {
+					//收取正常价格
+					Double money = ies.selectMoneyByEquipmentnumber(Equipmentnumber);
+					map.put("key", "money");
+					map.put("value", money);
+					//创建任务线程用来执行提成办法和订单服务
+					Thread t = new Thread(new ScanServer());
+					t.start();
+					return map;
+				}
+			}
+		}else {
+			map.put("key", "memberStatus");
+			map.put("value", state);
+			return map;
+		}
+	}
+	
+	/**
+	 * 查询该设备是否可用
+	 * @return 状态值
+	 */
+	@RequestMapping("selectStateByEquipmentnumber")
+	@ResponseBody
+	private Integer selectStateByEquipmentnumber() {
+		System.out.println("卡卡卡卡卡："+Equipmentnumber);
+		Integer state = ies.selectStateByEquipmentnumber(Equipmentnumber);
+		if (state == 1 || state == 3 || state == 4) {
+			return 0;
+		}
+		return state;
+	}
+	
+	/**
+	 * 会员管理
+	 * yangweihang
+	 * @Date 2018年8月26日 下午1:55:46
+	 * @return
+	 */
+	@RequestMapping("/selectByMember")
+	public String selectByMember(){
+		List<Map<String, Object>> list = ims.selectByMember();
+		//变换汉字
+		for(Map<String,Object> m : list){
+			if((int)m.get("sex") == YesOrNo.ON){
+				m.replace("sex", "男");
+			}
+			if(m.get("sex") == YesOrNo.YES){
+				m.replace("sex", "女");
+			}
+		}
+		request.setAttribute("list", list);
+		return "member/manage";
+	}
+	
+	/**
+	 * 查询一级上线
+	 * yangweihang
+	 * @Date 2018年8月26日 下午3:11:24
+	 * @param wxid
+	 * @return
+	 */
+	@RequestMapping("/onone")
+	public String selectonone(String wxid) {
+		Member m = ims.selectonone(wxid);
+		request.setAttribute("m", m);
+		return "member/onmember";
+	}
+
+
+	/**
+	 * 查询二级上线
+	 * yangweihang
+	 * @Date 2018年8月26日 下午3:11:35
+	 * @param wxid
+	 * @return
+	 */
+	@RequestMapping("/ontwo")
+	public String selectontwo(String wxid) {
+		Member m = ims.selectontwo(wxid);
+		request.setAttribute("m", m);
+		return "member/onmember";
+	}
+
+
+	/**
+	 * 查询一级下线
+	 * yangweihang
+	 * @Date 2018年8月26日 下午3:11:46
+	 * @param wxid
+	 * @return
+	 */
+	@RequestMapping("/upone")
+	public String selectupone(String wxid) {
+		 List<Member> list = ims.selectupone(wxid);
+		 request.setAttribute("list", list);
+		 return "member/upmember";
+	}
+
+
+	/**
+	 * 查询二级下线
+	 * yangweihang
+	 * @Date 2018年8月26日 下午3:11:59
+	 * @param wxid
+	 * @return
+	 */
+	@RequestMapping("/uptwo")
+	public String selectuptwo(String wxid) {
+		 List<Member> list = ims.selectuptwo(wxid);
+		 request.setAttribute("list", list);
+		 return "member/upmember";
+	}
+	
+}

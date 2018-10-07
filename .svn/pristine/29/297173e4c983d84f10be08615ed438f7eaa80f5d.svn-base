@@ -1,0 +1,43 @@
+package com.tly.model;
+
+import java.util.Date;
+
+/**
+ * 合伙人上下级
+ * @author lenovo
+ *
+ */
+public class PartneronupLevel {
+	private String wxid;//合伙人微信id
+	private String onwxid;//合伙人上级微信id
+	private Date time;//时间
+	public PartneronupLevel() {
+	}
+	public PartneronupLevel(String wxid, String onwxid, Date time) {
+		this.wxid = wxid;
+		this.onwxid = onwxid;
+		this.time = time;
+	}
+	public String getWxid() {
+		return wxid;
+	}
+	public void setWxid(String wxid) {
+		this.wxid = wxid;
+	}
+	public String getOnwxid() {
+		return onwxid;
+	}
+	public void setOnwxid(String onwxid) {
+		this.onwxid = onwxid;
+	}
+	public Date getTime() {
+		return time;
+	}
+	public void setTime(Date time) {
+		this.time = time;
+	}
+	@Override
+	public String toString() {
+		return "PartneronupLevel [wxid=" + wxid + ", onwxid=" + onwxid + ", time=" + time + "]";
+	}
+}

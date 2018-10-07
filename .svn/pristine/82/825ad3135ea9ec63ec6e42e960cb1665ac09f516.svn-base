@@ -1,0 +1,43 @@
+package com.tly.model;
+
+
+/**
+ * 设备
+ * @ClassName Equipment
+ * @Author yangweihang
+ * @Date 2018年8月24日 上午11:23:25
+ */
+public class Equipment {
+	private int id;//id
+	private String name;//设备名称
+	private String type;//设备型号
+	public Equipment() {
+	}
+	public Equipment(int id, String name, String type) {
+		this.id = id;
+		this.name = name;
+		this.type = type;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
+	@Override
+	public String toString() {
+		return "Equipment [id=" + id + ", name=" + name + ", type=" + type + "]";
+	}
+}

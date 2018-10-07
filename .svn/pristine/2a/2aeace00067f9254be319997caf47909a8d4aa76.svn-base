@@ -1,0 +1,124 @@
+package com.tly.dao.impl;
+
+import java.util.List;
+import java.util.Map;
+
+import org.mybatis.spring.support.SqlSessionDaoSupport;
+
+import com.tly.dao.IMemberDao;
+import com.tly.model.Member;
+
+/**
+ * @author moxiuchuan
+ * 会员dao
+ * 11点38分
+ */
+public class MemberDao extends SqlSessionDaoSupport implements IMemberDao{
+
+	@Override
+	public Integer selectOneByPhone(String phonenum) {
+		Integer mid = getSqlSession().selectOne("com.tly.dao.IMemberDao.selectOneByPhone", phonenum);
+		return mid;
+	}
+
+	/**
+	 * 会员管理
+	 * yangweihang
+	 * @Date 2018年8月26日 下午1:51:41
+	 * @return
+	 */
+	@Override
+	public List<Map<String, Object>> selectByMember() {
+		return getSqlSession().selectList("com.tly.dao.IMemberDao.selectByMember", null);
+	}
+
+	/**
+	 * 查询一级上线
+	 * yangweihang
+	 * @Date 2018年8月26日 下午3:05:36
+	 * @param wxid
+	 * @return
+	 */
+	@Override
+	public Member selectonone(String wxid) {
+		return getSqlSession().selectOne("com.tly.dao.IMemberDao.selectonone", wxid);
+	}
+
+	/**
+	 * 查询二级上线
+	 * yangweihang
+	 * @Date 2018年8月26日 下午3:07:06
+	 * @param wxid
+	 * @return
+	 */
+	@Override
+	public Member selectontwo(String wxid) {
+		return getSqlSession().selectOne("com.tly.dao.IMemberDao.selectontwo", wxid);
+	}
+
+	/**
+	 * 查询一级下线
+	 * yangweihang
+	 * @Date 2018年8月26日 下午3:08:11
+	 * @param wxid
+	 * @return
+	 */
+	@Override
+	public List<Member> selectupone(String wxid) {
+		return getSqlSession().selectList("com.tly.dao.IMemberDao.selectupone", wxid);
+	}
+
+	/**
+	 * 查询二级下线	
+	 * yangweihang
+	 * @Date 2018年8月26日 下午3:09:28
+	 * @param wxid
+	 * @return
+	 */
+	@Override
+	public List<Member> selectuptwo(String wxid) {
+		return getSqlSession().selectList("com.tly.dao.IMemberDao.selectuptwo", wxid);
+	}
+
+	@Override
+	public Member selectOneMemberByWxid(String wxid) {
+		return getSqlSession().selectOne("com.tly.dao.IMemberDao.selectOneMemberByWxid", wxid);
+	}
+
+	/**
+	 * 按设备编号关联查询合伙人的一级上线
+	 * yangweihang
+	 * @Date 2018年8月28日 下午4:23:00
+	 * @param number
+	 * @return
+	 */
+	@Override
+	public Member selectponone(String number) {
+		return getSqlSession().selectOne("com.tly.dao.IMemberDao.selectponone", number);
+	}
+
+	/**
+	 * 按设备编号关联查询合伙人二级上线
+	 * yangweihang
+	 * @Date 2018年8月28日 下午4:23:54
+	 * @param number
+	 * @return
+	 */
+	@Override
+	public Member selectpontwo(String number) {
+		return getSqlSession().selectOne("com.tly.dao.IMemberDao.selectpontwo", number);
+	}
+
+	@Override
+	public Integer selectMidByWxid(String wxid) {
+		Integer mid = getSqlSession().selectOne("com.tly.dao.IMemberDao.selectMidByWxid",wxid);
+		return mid;
+	}
+
+	@Override
+	public Integer insertOneMember(Member mem) {
+		// TODO Auto-generated method stub
+		Integer suc = getSqlSession().insert("com.tly.dao.IMemberDao.insertOneMember", mem);
+		return suc;
+	}
+}

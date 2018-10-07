@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 合伙人设备对应 -->
+<mapper namespace="com.tly.dao.IPartnerEquipmentDao">
+	<!-- 查询合伙人设备 -->
+	<select id="selectByPe" parameterType="java.lang.Integer" resultType="java.util.HashMap">
+		select e.type as type,es.number as number,pe.form as form,pe.status as status,ei.outtime as outtime,pe.time as time
+		 	from equipment as e
+			left join equipmentsublist as es on e.id = es.eid
+			left join equipmentinoutstorage as ei on ei.number = es.number
+			left join partnerequipment as pe on es.id = pe.eid
+			where pe.pid = #{pid}
+	</select>
+</mapper>

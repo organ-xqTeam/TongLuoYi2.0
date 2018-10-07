@@ -1,0 +1,79 @@
+package com.tly.service.impl;
+
+import java.util.List;
+import java.util.Map;
+
+import com.tly.dao.IPartnerEquipmentDao;
+import com.tly.model.PartnerEquipment;
+import com.tly.service.IPartnerEquipmentService;
+
+/**
+ * 查询合伙人设备
+ * @ClassName PartnerEquipmentService
+ * @Author yangweihang
+ * @Date 2018年8月26日 下午6:19:13
+ */
+public class PartnerEquipmentService implements IPartnerEquipmentService {
+
+	private IPartnerEquipmentDao ipedao;
+	
+	public IPartnerEquipmentDao getIpedao() {
+		return ipedao;
+	}
+
+
+	public void setIpedao(IPartnerEquipmentDao ipedao) {
+		this.ipedao = ipedao;
+	}
+
+
+	/**
+	 * 查询合伙人设备
+	 * yangweihang
+	 * @Date 2018年8月26日 下午6:19:54
+	 * @param pid
+	 * @return
+	 */
+	@Override
+	public List<Map<String, Object>> selectByPe(int pid) {
+		return ipedao.selectByPe(pid);
+	}
+
+
+	/**
+	 * 按设备编号查询
+	 * yangweihang
+	 * @Date 2018年8月28日 下午4:52:55
+	 * @param number
+	 * @return
+	 */
+	@Override
+	public PartnerEquipment selectByNumber(String number) {
+		return ipedao.selectByNumber(number);
+	}
+
+	/**
+	 * 按店铺管理员微信id查询设备
+	 * yangweihang
+	 * @Date 2018年8月29日 下午6:13:57
+	 * @param wxid
+	 * @return
+	 */
+	@Override
+	public List<Map<String, Object>> selectwxidByEs(String wxid) {
+		return ipedao.selectwxidByEs(wxid);
+	}
+
+	/**
+	 * 修改名称
+	 * @param pe
+	 * @return
+	 */
+	@Override
+	public int updatebyname(PartnerEquipment pe) {
+		return ipedao.updatebyname(pe);
+	}
+	
+	
+	
+}

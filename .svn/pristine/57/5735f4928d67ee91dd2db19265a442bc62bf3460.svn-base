@@ -1,0 +1,30 @@
+package com.tly.dao.impl;
+
+import java.util.Map;
+
+import org.mybatis.spring.support.SqlSessionDaoSupport;
+
+import com.tly.dao.IMemberWalletDao;
+
+/**
+ * 会员钱包dao接口
+ * @author moxiuchuan
+ * 17点15分
+ */
+public class MemberWalletDao extends SqlSessionDaoSupport implements IMemberWalletDao{
+
+	@Override
+	public Double selectRemainMoney(String wxid) {
+		// TODO Auto-generated method stub
+		Double remainMoney = getSqlSession().selectOne("com.tly.dao.IMemberWalletDao.selectRemainMoney", wxid);
+		return remainMoney;
+	}
+
+	@Override
+	public Integer updateMoneyByWxid(Map map) {
+		// TODO Auto-generated method stub
+		Integer suc = getSqlSession().update("com.tly.dao.IMemberWalletDao.updateMoneyByWxid", map);
+		return suc;
+	}
+
+}

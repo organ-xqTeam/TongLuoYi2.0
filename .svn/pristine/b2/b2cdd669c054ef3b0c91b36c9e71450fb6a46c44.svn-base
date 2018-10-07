@@ -1,0 +1,27 @@
+package com.tly.dao.impl;
+
+import java.util.List;
+import java.util.Map;
+
+import org.mybatis.spring.support.SqlSessionDaoSupport;
+
+import com.tly.dao.IMemberonupLevelDao;
+
+public class MemberonupLevelDao extends SqlSessionDaoSupport implements IMemberonupLevelDao{
+
+	@Override
+	public List<Map> selectDownOneWxidAndType(String wxid) {
+		// TODO Auto-generated method stub
+		List<Map> list = getSqlSession().selectList("com.tly.dao.IMemberonupLevelDao.selectDownOneWxidAndType", wxid);
+		System.out.println(list);
+		return list;
+	}
+
+	@Override
+	public List<Map> selectDownOneWxidAndSumTwo(String wxid) {
+		// TODO Auto-generated method stub
+		List<Map> list = getSqlSession().selectList("com.tly.dao.IMemberonupLevelDao.selectDownOneWxidAndSumTwo", wxid);
+		return list;
+	}
+
+}

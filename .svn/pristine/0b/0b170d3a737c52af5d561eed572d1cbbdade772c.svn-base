@@ -1,0 +1,88 @@
+package com.tly.service.impl;
+
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+
+import com.tly.dao.IEquipmentSublistDao;
+import com.tly.dao.IMemberDao;
+import com.tly.dao.IPartnerEquipmentDao;
+import com.tly.dao.IUserStatisticsDao;
+import com.tly.model.UserStatistics;
+import com.tly.service.IUserStatisticsService;
+
+/**
+ * 会员使用统计
+ * @ClassName UserStatisticsService
+ * @Author yangweihang
+ * @Date 2018年8月26日 下午4:19:37
+ */
+public class UserStatisticsService implements IUserStatisticsService {
+	
+	private IUserStatisticsDao iusdao;
+	
+	private IMemberDao imdao;
+	
+	private IEquipmentSublistDao iesdao;
+	
+	private IPartnerEquipmentDao ipedao;
+	
+	public IUserStatisticsDao getIusdao() {
+		return iusdao;
+	}
+
+	public void setIusdao(IUserStatisticsDao iusdao) {
+		this.iusdao = iusdao;
+	}
+
+	public IMemberDao getImdao() {
+		return imdao;
+	}
+
+	public void setImdao(IMemberDao imdao) {
+		this.imdao = imdao;
+	}
+
+	public IEquipmentSublistDao getIesdao() {
+		return iesdao;
+	}
+
+	public void setIesdao(IEquipmentSublistDao iesdao) {
+		this.iesdao = iesdao;
+	}
+
+	public IPartnerEquipmentDao getIpedao() {
+		return ipedao;
+	}
+
+	public void setIpedao(IPartnerEquipmentDao ipedao) {
+		this.ipedao = ipedao;
+	}
+
+	/**
+	 * 查询会员使用
+	 * yangweihang
+	 * @Date 2018年8月26日 下午4:23:21
+	 * @param mid
+	 * @return
+	 */
+	@Override
+	public List<Map<String,Object>> selectByUs(int mid) {
+		return iusdao.selectByUs(mid);
+	}
+
+	@Override
+	public Integer insert(String wxid, String equipmentnumber, Date starttime, Date utilitytime, Date endtime) {
+		// TODO Auto-generated method stub
+		Integer mid = imdao.selectMidByWxid(wxid);
+		Integer eid = iesdao.selectZiIdByEquipmentnumber(equipmentnumber);
+		Double smoney = ipedao.selectSmoneyByEid(eid);
+		UserStatistics ust = new UserStatistics();
+		ust.setMid(mid);
+		ust.setEid(eid);
+		ust.setMoney(smoney);
+		Integer suc = iusdao.insert(ust);
+		return suc;
+	}
+	
+}

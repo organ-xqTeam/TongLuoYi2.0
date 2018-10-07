@@ -1,0 +1,14 @@
+package com.tly.dao;
+
+import com.tly.model.Equipment;
+
+/**
+ * 设备
+ * @author lenovo
+ *
+ */
+public interface IEquipmentDao {
+	//新增
+	public int insert(Equipment e);
+	
+}

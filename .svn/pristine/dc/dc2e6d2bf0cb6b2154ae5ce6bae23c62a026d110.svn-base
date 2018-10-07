@@ -1,0 +1,30 @@
+package com.tly.dao.impl;
+
+import org.mybatis.spring.support.SqlSessionDaoSupport;
+
+import com.tly.dao.IEquipmentDao;
+import com.tly.model.Equipment;
+
+
+/**
+ * 设备
+ * @ClassName EquipmentDao
+ * @Author yangweihang
+ * @Date 2018年8月24日 上午11:21:47
+ */
+public class EquipmentDao extends SqlSessionDaoSupport implements IEquipmentDao {
+
+	
+	/**
+	 * 新增
+	 * yangweihang
+	 * @Date 2018年8月24日 上午11:22:09
+	 * @param e
+	 * @return
+	 */
+	@Override
+	public int insert(Equipment e) {
+		return getSqlSession().insert("com.tly.dao.IEquipmentDao.insert", e);
+	}
+
+}

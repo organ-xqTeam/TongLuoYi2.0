@@ -1,0 +1,23 @@
+package com.tly.dao;
+
+import java.util.List;
+import java.util.Map;
+
+/**
+ * 故障设备维修明细
+ * @ClassName IEquipmentMaintenanceDao
+ * @Author yangweihang
+ * @Date 2018年8月26日 下午11:46:45
+ */
+public interface IEquipmentMaintenanceDao {
+	
+	/**
+	 * 查询维修明细
+	 * yangweihang
+	 * @Date 2018年8月26日 下午11:47:37
+	 * @param pid
+	 * @return
+	 */
+	List<Map<String,Object>> selectByEm();
+	
+}

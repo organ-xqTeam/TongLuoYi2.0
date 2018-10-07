@@ -1,0 +1,58 @@
+package com.tly.util;
+
+import java.util.Map;
+
+import org.springframework.stereotype.Component;
+
+import com.tly.service.IPartnerService;
+
+/**
+ * @author moxiuchuan
+ * 扫码之后产生的服务
+ * 19点21分
+ */
+@Component
+public class ScanServer implements Runnable{
+
+	
+	private IPartnerService ips;
+	private Integer mid;
+	
+	//private boolean shutdownThread;//停止线程标记
+	
+	public ScanServer(Integer mid, IPartnerService ips) {
+		super();
+		this.ips = ips;
+		this.mid = mid;
+	}
+
+	public ScanServer() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
+	//@PostConstruct方法预加载，用来修饰方法（init只加载一次）
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		//提成办法
+		//1.检查其两个上级
+		Map<String,String> map = ips.selectSuper(mid);
+		//如果没有上级的话，就直接中断线程
+		if (map.isEmpty()) {
+			try {
+				this.wait();//让出进入阻塞状态，然后中断此线程
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		System.out.println("两级上线微信id为：" + map);
+		//2.查询两个上级需要反多少钱
+		//a.检查他是该会员的一级上线还是二级上线，然后作为一级或者二级上线应该返多少钱
+		//b.一级上线返：参数为级别和该会员的微信id
+		//Double moneyByRank1 = ips.selectMoneyByRank(1,map.get("firstOn"));
+		//c.二级上线返
+	}
+}

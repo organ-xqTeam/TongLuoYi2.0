@@ -1,0 +1,134 @@
+package com.tly.model;
+
+/**
+ * 财务管理
+ * @author lenovo
+ *
+ */
+public class Finance {
+	private Integer id;//id
+	private String wxid;//微信id
+	private Integer identity;//身份
+	private String onewxid;//一级上线微信id
+	private Double onemoney;//一级获得金额 
+	private String twowxid;//二级上线微信id
+	private Double twomoney;//二级获得金额
+	private Integer type;//类型  1.消费  2.租用  3.购买
+	private Integer eid;//设备id
+	private Double emoney;//设备金额(单价)
+	private Integer num;//数量
+	private Double fund;//公益金		租用0.4元/次	销售400/台
+	private Double ywfund;//运维基金	1/次
+	private Double wxfund;//维修基金	3/次
+	public Finance() {
+	}
+	public Finance(Integer id, String wxid, Integer identity, String onewxid, Double onemoney, String twowxid,
+			Double twomoney, Integer type, Integer eid, Double emoney, Integer num, Double fund, Double ywfund,
+			Double wxfund) {
+		this.id = id;
+		this.wxid = wxid;
+		this.identity = identity;
+		this.onewxid = onewxid;
+		this.onemoney = onemoney;
+		this.twowxid = twowxid;
+		this.twomoney = twomoney;
+		this.type = type;
+		this.eid = eid;
+		this.emoney = emoney;
+		this.num = num;
+		this.fund = fund;
+		this.ywfund = ywfund;
+		this.wxfund = wxfund;
+	}
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	public String getWxid() {
+		return wxid;
+	}
+	public void setWxid(String wxid) {
+		this.wxid = wxid;
+	}
+	public Integer getIdentity() {
+		return identity;
+	}
+	public void setIdentity(Integer identity) {
+		this.identity = identity;
+	}
+	public String getOnewxid() {
+		return onewxid;
+	}
+	public void setOnewxid(String onewxid) {
+		this.onewxid = onewxid;
+	}
+	public Double getOnemoney() {
+		return onemoney;
+	}
+	public void setOnemoney(Double onemoney) {
+		this.onemoney = onemoney;
+	}
+	public String getTwowxid() {
+		return twowxid;
+	}
+	public void setTwowxid(String twowxid) {
+		this.twowxid = twowxid;
+	}
+	public Double getTwomoney() {
+		return twomoney;
+	}
+	public void setTwomoney(Double twomoney) {
+		this.twomoney = twomoney;
+	}
+	public Integer getType() {
+		return type;
+	}
+	public void setType(Integer type) {
+		this.type = type;
+	}
+	public Integer getEid() {
+		return eid;
+	}
+	public void setEid(Integer eid) {
+		this.eid = eid;
+	}
+	public Double getEmoney() {
+		return emoney;
+	}
+	public void setEmoney(Double emoney) {
+		this.emoney = emoney;
+	}
+	public Integer getNum() {
+		return num;
+	}
+	public void setNum(Integer num) {
+		this.num = num;
+	}
+	public Double getFund() {
+		return fund;
+	}
+	public void setFund(Double fund) {
+		this.fund = fund;
+	}
+	public Double getYwfund() {
+		return ywfund;
+	}
+	public void setYwfund(Double ywfund) {
+		this.ywfund = ywfund;
+	}
+	public Double getWxfund() {
+		return wxfund;
+	}
+	public void setWxfund(Double wxfund) {
+		this.wxfund = wxfund;
+	}
+	@Override
+	public String toString() {
+		return "Finance [id=" + id + ", wxid=" + wxid + ", identity=" + identity + ", onewxid=" + onewxid
+				+ ", onemoney=" + onemoney + ", twowxid=" + twowxid + ", twomoney=" + twomoney + ", type=" + type
+				+ ", eid=" + eid + ", emoney=" + emoney + ", num=" + num + ", fund=" + fund + ", ywfund=" + ywfund
+				+ ", wxfund=" + wxfund + "]";
+	}
+}

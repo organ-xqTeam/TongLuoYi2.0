@@ -1,0 +1,40 @@
+package com.tly.controller;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.tly.model.Equipment;
+import com.tly.service.IEquipmentService;
+
+/**
+ * 设备
+ * @ClassName EquipmentController
+ * @Author yangweihang
+ * @Date 2018年8月24日 上午11:46:05
+ */
+@Controller
+@RequestMapping("/equipment")
+public class EquipmentController {
+	
+	@Autowired
+	private IEquipmentService ies;
+	
+	@Autowired
+	private HttpServletRequest request;
+	
+	/**
+	 * 新增设备
+	 * yangweihang
+	 * @Date 2018年8月24日 上午11:58:14
+	 * @param e
+	 * @return
+	 */
+	@RequestMapping("/insert")
+	public String insert(Equipment e){
+		int result = ies.insert(e);
+		return "equipment/insert";
+	}
+}

@@ -1,0 +1,46 @@
+package com.tly.service.impl;
+
+import com.tly.dao.IMemberDao;
+import com.tly.dao.IUserStatisticsDao;
+import com.tly.service.IMemberService;
+
+public class MemberService implements IMemberService{
+	
+	private IMemberDao imdao;
+	
+	private IUserStatisticsDao iusdao;
+
+	public IMemberDao getImdao() {
+		return imdao;
+	}
+
+
+	public void setImdao(IMemberDao imdao) {
+		this.imdao = imdao;
+	}
+
+	public IUserStatisticsDao getIusdao() {
+		return iusdao;
+	}
+
+
+	public void setIusdao(IUserStatisticsDao iusdao) {
+		this.iusdao = iusdao;
+	}
+
+
+	@Override
+	public Integer selectOneByPhone(String phonenum) {
+		// TODO Auto-generated method stub
+		Integer mid = imdao.selectOneByPhone(phonenum);
+		return mid;
+	}
+
+
+	@Override
+	public Integer selectUseSumByMid(int mid) {
+		// TODO Auto-generated method stub
+		Integer sum = iusdao.selectUseSumByMid(mid);
+		return sum;
+	}
+}

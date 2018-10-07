@@ -1,0 +1,38 @@
+package com.tly.service.impl;
+
+import java.util.List;
+
+import com.tly.dao.IAdministratorDao;
+import com.tly.model.Administrator;
+import com.tly.service.IAdministratorService;
+
+/**
+ * 店铺管理员
+ * @ClassName IAdministratorService
+ * @Author yangweihang
+ * @Date 2018年8月26日 下午7:12:16
+ */
+public class AdministratorService implements IAdministratorService {
+	
+	private IAdministratorDao iadao;
+
+	public IAdministratorDao getIadao() {
+		return iadao;
+	}
+
+	public void setIadao(IAdministratorDao iadao) {
+		this.iadao = iadao;
+	}
+	
+	/**
+	 * 查询店铺管理员
+	 * yangweihang
+	 * @Date 2018年8月26日 下午7:16:05
+	 * @param pid
+	 * @return
+	 */
+	public List<Administrator> selectByA(int pid){
+		return iadao.selectByA(pid);
+	}
+	
+}

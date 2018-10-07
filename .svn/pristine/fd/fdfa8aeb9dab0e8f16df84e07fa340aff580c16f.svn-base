@@ -1,0 +1,15 @@
+package com.tly.dao.impl;
+
+import org.mybatis.spring.support.SqlSessionDaoSupport;
+
+import com.tly.dao.IUserStatisticsDao;
+
+public class UserStatisticsDao extends SqlSessionDaoSupport implements IUserStatisticsDao{
+
+	@Override
+	public Integer selectUseSumByMid(int mid) {
+		// TODO Auto-generated method stub
+		Integer sum = getSqlSession().selectOne("com.tly.dao.IUserStatisticsDao.selectUseSumByMid",mid);
+		return sum;
+	}
+}

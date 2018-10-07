@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 会员上下级对应关系 -->
+<mapper namespace="com.tly.dao.IMemberonupLevelDao">
+
+	<!-- 根据该用户id查询该用户一级下线的微信id和成为下线方式的列表 -->
+	<select id="selectDownOneWxidAndType" parameterType="java.lang.String" resultType="java.util.HashMap">
+		select wxid as wxid,type as type from memberonuplevel where onwxid=#{wxid}
+	</select>
+	
+	<select id="selectDownOneWxidAndSumTwo" parameterType="java.lang.String" resultType="java.util.HashMap">
+		select wxid as wxid,(select count(*) from memberonuplevel as ml1 where ml1.onwxid = ml.wxid) as sum from memberonuplevel as ml where onwxid = #{wxid}
+	</select>
+</mapper>

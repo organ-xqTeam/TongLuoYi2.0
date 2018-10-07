@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 出入库明细 -->
+<mapper namespace="com.tly.dao.IEquipmentInoutstorageDao">
+	<!-- 新增出入库明细 -->
+	<insert id="insertei" parameterType="com.tly.model.EquipmentInoutstorage">
+		insert into equipmentinoutstorage(number,status,entrytime,source) values(#{number},#{status},now(),#{source})
+	</insert>
+</mapper>

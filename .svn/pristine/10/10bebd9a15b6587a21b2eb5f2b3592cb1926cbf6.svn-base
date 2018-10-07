@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 积分明细 -->
+<mapper namespace="com.tly.dao.IIntegralDao">
+	<!-- 查询积分 -->
+	<select id="selectByIntegral" parameterType="java.lang.String" resultType="com.tly.model.Integral">
+		select * from integral where wxid=#{wxid}
+	</select>
+</mapper>

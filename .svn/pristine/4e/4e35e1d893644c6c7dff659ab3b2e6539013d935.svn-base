@@ -1,0 +1,42 @@
+package com.tly.dao;
+
+import java.util.List;
+
+import com.tly.model.Integral;
+
+/**
+ * 积分明细
+ * @ClassName IIntegralDao
+ * @Author yangweihang
+ * @Date 2018年8月26日 下午3:35:46
+ */
+public interface IIntegralDao {
+	
+	/**
+	 * 查询积分明细
+	 * yangweihang
+	 * @Date 2018年8月26日 下午3:40:34
+	 * @param wxid
+	 * @return
+	 */
+	List<Integral> selectByIntegral(String wxid);
+	
+	/**
+	 * 修改星评
+	 * yangweihang
+	 * @Date 2018年8月27日 下午5:01:32
+	 * @param usid
+	 * @return
+	 */
+	int updatestarrating(Integral i);
+	
+	/**
+	 * 修改留言
+	 * yangweihang
+	 * @Date 2018年8月27日 下午5:01:32
+	 * @param usid
+	 * @return
+	 */
+	int updateleaveword(Integral i);
+	
+}

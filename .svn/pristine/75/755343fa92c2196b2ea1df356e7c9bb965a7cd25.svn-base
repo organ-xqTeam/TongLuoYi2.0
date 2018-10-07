@@ -1,0 +1,21 @@
+package com.tly.dao.impl;
+
+import org.mybatis.spring.support.SqlSessionDaoSupport;
+
+import com.tly.dao.IEquipmentSublistDao;
+
+/**
+ * @author moxiuchuan
+ * 设备子表dao实现类
+ * 15点19分
+ */
+public class EquipmentSublistDao  extends SqlSessionDaoSupport implements IEquipmentSublistDao{
+
+	@Override
+	public Integer selectStateByEquipmentnumber(String equipmentnumber) {
+		// TODO Auto-generated method stub
+		Integer state = getSqlSession().selectOne("com.tly.dao.IMemberDao.selectOneByPhone", equipmentnumber);
+		return state;
+	}
+	
+}

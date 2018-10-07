@@ -1,0 +1,42 @@
+package com.tly.service;
+
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+
+/**
+ * 会员使用
+ * @ClassName IUserStatisticsService
+ * @Author yangweihang
+ * @Date 2018年8月26日 下午4:18:23
+ */
+public interface IUserStatisticsService {
+
+	/**
+	 * 查询会员使用
+	 * yangweihang
+	 * @Date 2018年8月26日 下午4:15:32
+	 * @param mid
+	 * @return
+	 */
+	List<Map<String,Object>> selectByUs(int mid);
+
+	/**
+	 * 录入会员使用统计
+	 * @param wxid 扫码人微信id
+	 * @param equipmentnumber 设备编号
+	 * @param starttime 开始时间
+	 * @param utilitytime 使用时长
+	 * @param endtime 结束时间
+	 * @return 0为录入不成功 1为录入成功
+	 */
+	Integer insert(String wxid, String equipmentnumber, Date starttime, Date utilitytime, Date endtime);
+
+	/**
+	 * 该用户的使用总次数和总时长
+	 * @param wxid 
+	 * @return 总次数和总时长
+	 */
+	Map selectSumuserstatistics(String wxid);
+	
+}

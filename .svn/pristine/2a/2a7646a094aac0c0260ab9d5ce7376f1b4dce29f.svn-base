@@ -1,0 +1,88 @@
+package com.tly.service.impl;
+
+import java.util.List;
+import java.util.Map;
+
+import com.tly.dao.IEquipmentMaintenanceDao;
+import com.tly.model.EquipmentMaintenance;
+import com.tly.service.IEquipmentMaintenanceService;
+
+/**
+ * 故障设备维修明细
+ * @ClassName EquipmentMaintenanceService
+ * @Author yangweihang
+ * @Date 2018年8月26日 下午11:57:26
+ */
+public class EquipmentMaintenanceService implements IEquipmentMaintenanceService {
+
+	private IEquipmentMaintenanceDao iemdao;
+	
+	public IEquipmentMaintenanceDao getIemdao() {
+		return iemdao;
+	}
+
+	public void setIemdao(IEquipmentMaintenanceDao iemdao) {
+		this.iemdao = iemdao;
+	}
+
+
+	/**
+	 * 查询维修明细
+	 * yangweihang
+	 * @Date 2018年8月26日 下午11:58:00
+	 * @param pid
+	 * @return
+	 */
+	@Override
+	public List<Map<String, Object>> selectByEm() {
+		return iemdao.selectByEm();
+	}
+
+	/**
+	 * 查询没有处理的维修工单
+	 * yangweihang
+	 * @Date 2018年8月28日 下午8:42:38
+	 * @return
+	 */
+	@Override
+	public List<Map<String, Object>> selectByNotWid() {
+		return iemdao.selectByNotWid();
+	}
+
+	/**
+	 * 接单
+	 * yangweihang
+	 * @Date 2018年8月28日 下午8:58:36
+	 * @param em
+	 * @return
+	 */
+	@Override
+	public int updatewid(EquipmentMaintenance em) {
+		return iemdao.updatewid(em);
+	}
+
+	/**
+	 * 修改维修结果
+	 * yangweihang
+	 * @Date 2018年8月28日 下午9:09:08
+	 * @param em
+	 * @return
+	 */
+	@Override
+	public int updateresult(EquipmentMaintenance em) {
+		return iemdao.updateresult(em);
+	}
+
+	/**
+	 * 按工程师id查询维修明细
+	 * yangweihang
+	 * @Date 2018年8月28日 下午9:23:54
+	 * @param wid
+	 * @return
+	 */
+	@Override
+	public List<Map<String, Object>> selectBywid(int wid) {
+		return iemdao.selectBywid(wid);
+	}
+
+}

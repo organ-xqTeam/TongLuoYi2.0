@@ -1,0 +1,23 @@
+package com.tly.service;
+
+import java.util.List;
+
+import com.tly.model.Shop;
+
+/**
+ * 店铺管理
+ * @ClassName IShopService
+ * @Author yangweihang
+ * @Date 2018年8月26日 下午1:12:52
+ */
+public interface IShopService {
+	
+	/**
+	 * 查询店铺
+	 * yangweihang
+	 * @Date 2018年8月26日 下午1:08:36
+	 * @return
+	 */
+	List<Shop> selectByShop();
+	
+}

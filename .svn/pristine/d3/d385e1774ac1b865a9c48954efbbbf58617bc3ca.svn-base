@@ -1,0 +1,60 @@
+package com.tly.service;
+
+import java.util.List;
+import java.util.Map;
+
+import com.tly.model.Partner;
+
+/**
+ * 合伙人
+ * @ClassName IPartnerService
+ * @Author yangweihang
+ * @Date 2018年8月26日 下午5:18:14
+ */
+public interface IPartnerService {
+	
+	/**
+	 * 查询合伙人详情
+	 * yangweihang
+	 * @Date 2018年8月26日 下午5:08:35
+	 * @return
+	 */
+	public List<Map<String,Object>> selectByPartner();
+	
+	/**
+	 * 查询一级上线 
+	 * yangweihang
+	 * @Date 2018年8月26日 下午3:05:06
+	 * @param wxid
+	 * @return
+	 */
+	Partner selectonone(String wxid);
+	
+	/**
+	 * 查询二级上线
+	 * yangweihang
+	 * @Date 2018年8月26日 下午3:06:48
+	 * @param wxid
+	 * @return
+	 */
+	Partner selectontwo(String wxid);
+	
+	/**
+	 * 查询一级下线
+	 * yangweihang
+	 * @Date 2018年8月26日 下午3:07:52
+	 * @param wxid
+	 * @return
+	 */
+	List<Partner> selectupone(String wxid);
+	
+	/**
+	 * 查询二级 下线
+	 * yangweihang
+	 * @Date 2018年8月26日 下午3:08:57
+	 * @param wxid
+	 * @return
+	 */
+	List<Partner> selectuptwo(String wxid);
+	
+}

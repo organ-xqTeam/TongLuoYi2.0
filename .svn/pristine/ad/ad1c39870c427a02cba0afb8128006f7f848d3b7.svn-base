@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 会员 -->
+<mapper namespace="com.tly.dao.IMemberDao">
+	<!-- 根据电话查询该用户的id -->
+	<select id="selectOneByPhone" parameterType="java.lang.String" resultType="java.lang.Integer">
+		select id from member where phonenum = #{phonenum}
+	</select>
+</mapper>

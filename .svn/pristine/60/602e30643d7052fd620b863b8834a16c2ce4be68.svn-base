@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+     xsi:schemaLocation="
+     http://www.springframework.org/schema/beans 
+	 http://www.springframework.org/schema/beans/spring-beans-4.2.xsd">
+	
+	<import resource="applicationContext_dao.xml"/>
+	<!-- 会员 -->
+	<bean id="ims" class="com.tly.service.impl.MemberService">
+		<property name="imdao" ref="imdao"></property>	
+	</bean>
+	<!-- 会员钱包 -->
+	<bean id="imws" class="com.tly.service.impl.MemberWalletService">
+		<property name="imwdao" ref="imwdao"></property>
+	</bean>
+	<!-- 会员上下级对应 -->
+	<bean id="imouls" class="com.tly.service.impl.MemberonupLevelService">
+		<property name="imouldao" ref="imouldao"></property>
+	</bean>
+	<!-- 会员级别 -->
+	<bean id="imls" class="com.tly.service.impl.MemberLevelService">
+		<property name="imldao" ref="imldao"></property>
+	</bean>
+	<!-- 会员使用 -->
+	<bean id="iuss" class="com.tly.service.impl.UserStatisticsService">
+		<property name="iusdao" ref="iusdao"></property>
+	</bean>
+</beans>

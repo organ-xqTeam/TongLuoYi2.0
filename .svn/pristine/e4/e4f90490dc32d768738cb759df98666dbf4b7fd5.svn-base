@@ -1,0 +1,44 @@
+package com.tly.dao.impl;
+
+import java.util.List;
+import java.util.Map;
+
+import org.mybatis.spring.support.SqlSessionDaoSupport;
+
+import com.tly.dao.IPartnerEquipmentDao;
+
+/**
+ * 合伙人设备对应
+ * @ClassName PartnerEquipmentDao
+ * @Author yangweihang
+ * @Date 2018年8月26日 下午6:11:07
+ */
+public class PartnerEquipmentDao extends SqlSessionDaoSupport implements IPartnerEquipmentDao {
+
+	/**
+	 * 查询合伙人设备
+	 * yangweihang
+	 * @Date 2018年8月26日 下午6:11:43
+	 * @param pid
+	 * @return
+	 */
+	@Override
+	public List<Map<String, Object>> selectByPe(int pid) {
+		return getSqlSession().selectList("com.tly.dao.IPartnerEquipmentDao.selectByPe", pid);
+	}
+
+	@Override
+	public Integer selectEquipmentForm(String equipmentnumber) {
+		// TODO Auto-generated method stub
+		Integer form = getSqlSession().selectOne("com.tly.dao.IPartnerEquipmentDao.selectEquipmentForm", equipmentnumber);
+		return form;
+	}
+
+	@Override
+	public Double selectSmoneyByEid(Integer eid) {
+		// TODO Auto-generated method stub
+		Double smoney = getSqlSession().selectOne("com.tly.dao.IPartnerEquipmentDao.selectSmoneyByEid", eid);
+		return smoney;
+	}
+
+}

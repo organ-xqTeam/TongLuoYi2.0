@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 合伙人 -->
+<mapper namespace="com.tly.dao.IPartnerDao">
+	<!-- 查询合伙人详情 -->
+	<select id="selectByPartner" resultType="java.util.HashMap">
+		select p.id as pid,p.wxid as wxid,p.nickname as nickname,p.name as name,p.sex as sex,p.date as date,p.phonenum as phonenum,p.city as city,
+			if((select status from partnerequipment as p1 where status=1 and pid = p.id)=1 and 
+			(select status from partnerequipment as p1 where status=2 and pid = p.id) = 2,'租用+购买',
+			if((select status from partnerequipment as p1 where status=1 and pid = p.id)=1,'租用','购买')) as form,
+			p.plid as plid,pw.money as money
+			from partner as p 
+			left join partnerwallet as pw on p.wxid = pw.wxid
+			left join partnerequipment as pe on p.id = pe.pid
+			group by pe.pid
+	</select>
+	<!-- 查询一级上线 -->
+	<select id="selectonone" parameterType="java.lang.String" resultType="com.tly.model.Partner">
+		select * from partner where wxid =(select onwxid from partneronuplevel where wxid = #{wxid})
+	</select>
+	<!-- 查询二级上线 -->
+	<select id="selectontwo" parameterType="java.lang.String" resultType="com.tly.model.Partner">
+		select * from partner where wxid =(select onwxid from partneronuplevel where wxid = (select onwxid from partneronuplevel where wxid = #{wxid}))
+	</select>
+	<!-- 查询一级下线 -->
+	<select id="selectupone" parameterType="java.lang.String" resultType="com.tly.model.Partner">
+		select * from partner where wxid in ( select wxid from partneronuplevel where onwxid=#{wxid})
+	</select>
+	<!-- 查询二级下线 -->
+	<select id="selectuptwo" parameterType="java.lang.String" resultType="com.tly.model.Partner">
+		select * from partner where wxid in ( select wxid from partneronuplevel where onwxid in(select wxid from partneronuplevel where onwxid=#{wxid}))
+	</select>
+	<!-- 查询该设备租用者微信id-->
+	<select id="selectPeoByEquipmentnumber" parameterType="java.lang.String" resultType="java.lang.String">
+		select wxid from partner where id = (select pid from partnerequipment where eid = (select id from equipmentsublist where number = #{equipmentnumber}))
+	</select>
+	<!-- 按微信id查询 -->
+	<select id="selectByWxid" parameterType="java.lang.String" resultType="com.tly.model.Partner">
+		select * from partner where wxid = #{wxid}
+	</select>
+</mapper>

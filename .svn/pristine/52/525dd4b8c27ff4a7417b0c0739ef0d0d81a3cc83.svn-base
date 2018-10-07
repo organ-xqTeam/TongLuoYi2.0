@@ -1,0 +1,12 @@
+package com.tly.model;
+
+/**
+ * 店铺
+ * @author lenovo
+ *
+ */
+public class Shop {
+	private Integer sid;//id
+	private Integer pid;//合伙人id
+	private String name;
+}

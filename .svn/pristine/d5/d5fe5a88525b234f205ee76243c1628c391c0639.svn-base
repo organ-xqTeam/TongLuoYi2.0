@@ -1,0 +1,61 @@
+package com.tly.controller;
+
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.tly.model.Integral;
+import com.tly.service.IIntegralService;
+
+/**
+ * 积分明细
+ * @ClassName IntegralController
+ * @Author yangweihang
+ * @Date 2018年8月26日 下午3:44:14
+ */
+@Controller
+@RequestMapping("/integral")
+public class IntegralController {
+	
+	@Autowired
+	private IIntegralService iis;
+	
+	@Autowired
+	private HttpServletRequest request;
+	
+	/**
+	 * 查询积分明细
+	 * yangweihang
+	 * @Date 2018年8月26日 下午3:46:20
+	 * @param wxid
+	 * @return
+	 */
+	@RequestMapping("/selectByIntegral")
+	public String selectByIntegral(String wxid){
+		List<Integral> list = iis.selectByIntegral(wxid);
+		request.setAttribute("list", list);
+		return "integral/manage";
+	}
+	
+	/**
+	 * 录入积分
+	 * @param wxid 扫码人微信id
+	 * @param type 什么渠道来获取的积分
+	 * @param eid  设备编号
+	 * @param num 具体是多少积分
+	 * 时间就是当前时间
+	 * 会员使用统计id自己查该会员最后一条
+	 * @return 是否录入成功
+	 */
+	@RequestMapping("insertIntegral")
+	private Integer insertIntegral(String wxid,Integer type,Long num,String equipmentnumber) {
+		
+		Integer suc = iis.insertIntegral(wxid,type,num,equipmentnumber);
+		return suc;
+	}
+	
+}

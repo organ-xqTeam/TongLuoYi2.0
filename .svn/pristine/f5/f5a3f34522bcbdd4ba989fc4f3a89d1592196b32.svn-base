@@ -1,0 +1,12 @@
+package com.tly.service;
+
+public interface IMemberService {
+
+	/**
+	 * 通过电话号码查询会员id
+	 * @param phonenum
+	 * @return 会员id
+	 */
+	Integer selectOneByPhone(String phonenum);
+	
+}

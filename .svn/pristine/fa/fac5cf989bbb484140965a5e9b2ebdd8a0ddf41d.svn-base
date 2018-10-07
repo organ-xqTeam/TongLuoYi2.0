@@ -1,0 +1,22 @@
+package com.tly.dao;
+
+import java.util.List;
+import java.util.Map;
+
+
+
+/**
+ * @author moxiuchuan
+ * 合伙人上下级关系dao接口
+ * 2018年8月26日09:14:48
+ * verson 1.0
+ */
+public interface IPartneronupLevelDao {
+
+	/**
+	 * @param mid 会员编号
+	 * @return 该会员的两个上级
+	 */
+	Map selectSuper(Integer mid);
+	
+}

@@ -1,0 +1,17 @@
+package com.tly.dao;
+
+/**
+ * @author moxiuchuan
+ * 设备子表dao接口
+ * 15点10分
+ */
+public interface IEquipmentSublistDao {
+
+	/**
+	 * 根据设备码查询该台设备的状态
+	 * @param equipmentnumber
+	 * @return 设备状态
+	 */
+	Integer selectStateByEquipmentnumber(String equipmentnumber);
+	
+}

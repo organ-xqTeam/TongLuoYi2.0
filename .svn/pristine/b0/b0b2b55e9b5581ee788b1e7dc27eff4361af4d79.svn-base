@@ -1,0 +1,27 @@
+package com.tly.service.impl;
+
+import com.tly.dao.IMemberDao;
+import com.tly.service.IMemberService;
+
+public class MemberService implements IMemberService{
+	
+	private IMemberDao imdao;
+	
+
+	public IMemberDao getImdao() {
+		return imdao;
+	}
+
+
+	public void setImdao(IMemberDao imdao) {
+		this.imdao = imdao;
+	}
+
+
+	@Override
+	public Integer selectOneByPhone(String phonenum) {
+		// TODO Auto-generated method stub
+		Integer mid = imdao.selectOneByPhone(phonenum);
+		return mid;
+	}
+}

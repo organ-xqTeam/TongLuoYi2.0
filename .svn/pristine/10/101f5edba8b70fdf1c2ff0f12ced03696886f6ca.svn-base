@@ -1,0 +1,98 @@
+package com.tly.dao;
+
+import java.util.List;
+import java.util.Map;
+
+import com.tly.model.Member;
+
+/**
+ * @author moxiuchuan
+ * 会员dao
+ * 11点33分
+ */
+public interface IMemberDao {
+
+	/**
+	 * 根据手机号查询一个会员id
+	 * @param phonenum
+	 * @return 会员id
+	 */
+	Integer selectOneByPhone(String phonenum);
+	
+	/**
+	 * 会员管理
+	 * yangweihang
+	 * @Date 2018年8月26日 下午1:51:21
+	 * @return
+	 */
+	List<Map<String,Object>> selectByMember();
+	
+	/**
+	 * 查询一级上线 
+	 * yangweihang
+	 * @Date 2018年8月26日 下午3:05:06
+	 * @param wxid
+	 * @return
+	 */
+	Member selectonone(String wxid);
+	
+	/**
+	 * 查询二级上线
+	 * yangweihang
+	 * @Date 2018年8月26日 下午3:06:48
+	 * @param wxid
+	 * @return
+	 */
+	Member selectontwo(String wxid);
+	
+	/**
+	 * 查询一级下线
+	 * yangweihang
+	 * @Date 2018年8月26日 下午3:07:52
+	 * @param wxid
+	 * @return
+	 */
+	List<Member> selectupone(String wxid);
+	
+	/**
+	 * 查询二级 下线
+	 * yangweihang
+	 * @Date 2018年8月26日 下午3:08:57
+	 * @param wxid
+	 * @return
+	 */
+	List<Member> selectuptwo(String wxid);
+
+	/**
+	 * 根据用户的微信id查询整个用户对象
+	 * @param wxid 该用户微信id
+	 * @return 该用户对象
+	 */
+	Member selectOneMemberByWxid(String wxid);
+
+	/**
+	 * 根据用户微信id查询该用户的mid
+	 * @param wxid  用户微信id
+	 * @return 用户mid
+	 */
+	Integer selectMidByWxid(String wxid);
+	
+	/**
+	 * 按设备编号关联查询合伙人的一级上线
+	 * yangweihang
+	 * @Date 2018年8月28日 下午4:22:00
+	 * @param number
+	 * @return
+	 */
+	Member selectponone(String number);
+	
+	/**
+	 * 按设备编号关联查询合伙人二级上线
+	 * yangweihang
+	 * @Date 2018年8月28日 下午4:22:30
+	 * @param number
+	 * @return
+	 */
+	Member selectpontwo(String number);
+
+}

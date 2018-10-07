@@ -1,0 +1,83 @@
+package com.tly.dao.impl;
+
+import java.util.List;
+import java.util.Map;
+
+import org.mybatis.spring.support.SqlSessionDaoSupport;
+
+import com.tly.dao.IMemberDao;
+import com.tly.model.Member;
+
+/**
+ * @author moxiuchuan
+ * 会员dao
+ * 11点38分
+ */
+public class MemberDao extends SqlSessionDaoSupport implements IMemberDao{
+
+	@Override
+	public Integer selectOneByPhone(String phonenum) {
+		Integer mid = getSqlSession().selectOne("com.tly.dao.IMemberDao.selectOneByPhone", phonenum);
+		return mid;
+	}
+
+	/**
+	 * 会员管理
+	 * yangweihang
+	 * @Date 2018年8月26日 下午1:51:41
+	 * @return
+	 */
+	@Override
+	public List<Map<String, Object>> selectByMember() {
+		return getSqlSession().selectList("com.tly.dao.IMemberDao.selectByMember", null);
+	}
+
+	/**
+	 * 查询一级上线
+	 * yangweihang
+	 * @Date 2018年8月26日 下午3:05:36
+	 * @param wxid
+	 * @return
+	 */
+	@Override
+	public Member selectonone(String wxid) {
+		return getSqlSession().selectOne("com.tly.dao.IMemberDao.selectonone", wxid);
+	}
+
+	/**
+	 * 查询二级上线
+	 * yangweihang
+	 * @Date 2018年8月26日 下午3:07:06
+	 * @param wxid
+	 * @return
+	 */
+	@Override
+	public Member selectontwo(String wxid) {
+		return getSqlSession().selectOne("com.tly.dao.IMemberDao.selectontwo", wxid);
+	}
+
+	/**
+	 * 查询一级下线
+	 * yangweihang
+	 * @Date 2018年8月26日 下午3:08:11
+	 * @param wxid
+	 * @return
+	 */
+	@Override
+	public List<Member> selectupone(String wxid) {
+		return getSqlSession().selectList("com.tly.dao.IMemberDao.selectupone", wxid);
+	}
+
+	/**
+	 * 查询二级下线	
+	 * yangweihang
+	 * @Date 2018年8月26日 下午3:09:28
+	 * @param wxid
+	 * @return
+	 */
+	@Override
+	public List<Member> selectuptwo(String wxid) {
+		return getSqlSession().selectList("com.tly.dao.IMemberDao.selectuptwo", wxid);
+	}
+	
+}

@@ -1,0 +1,5 @@
+package com.tly.service;
+
+public class IEquipmentService {
+
+}

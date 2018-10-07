@@ -1,0 +1,21 @@
+package com.tly.dao.impl;
+
+import org.mybatis.spring.support.SqlSessionDaoSupport;
+
+import com.tly.dao.IMemberDao;
+
+/**
+ * @author moxiuchuan
+ * 会员dao
+ * 11点38分
+ */
+public class MemberDao extends SqlSessionDaoSupport implements IMemberDao{
+
+	@Override
+	public Integer selectOneByPhone(String phonenum) {
+		// TODO Auto-generated method stub
+		Integer mid = getSqlSession().selectOne("com.tly.dao.IMemberDao.selectOneByPhone", phonenum);
+		return mid;
+	}
+	
+}

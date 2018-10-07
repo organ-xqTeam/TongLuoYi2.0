@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 设备子表 -->
+<mapper namespace="com.tly.dao.IEquipmentSublistDao">
+	
+	<!-- 根据设备码查询设备状态 -->
+	<select id="selectStateByEquipmentnumber" parameterType="java.lang.String" resultType="java.lang.Integer">
+		select status from partnerequipment where eid = (select id from equipmentsublist where number = #{_parameter})
+	</select>
+	
+	<!-- 新增产品 -->
+	<insert id="insertes" parameterType="com.tly.model.EquipmentSublist">
+		insert into equipmentsublist(eid,number,ewm,platformprice,servicetime) values(#{eid},#{number},#{ewm},#{platformprice},#{servicetime})
+	</insert>
+	
+	<!-- 按条件查询 -->
+	<select id="selectByCondition" parameterType="java.util.HashMap" resultType="com.tly.model.EquipmentSublist">
+		select * from equipmentsublist
+		<where>
+			<if test="number != null and number != ''">
+				and number = #{number}
+			</if>
+		</where>
+	</select>
+	
+</mapper>

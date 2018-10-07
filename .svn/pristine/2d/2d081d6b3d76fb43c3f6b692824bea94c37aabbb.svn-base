@@ -1,0 +1,65 @@
+package com.tly.service.impl;
+
+import java.util.List;
+
+import com.tly.dao.IIntegralDao;
+import com.tly.model.Integral;
+import com.tly.service.IIntegralService;
+
+/**
+ * 查询积分明细
+ * @ClassName IntegralService
+ * @Author yangweihang
+ * @Date 2018年8月26日 下午3:42:41
+ */
+public class IntegralService implements IIntegralService {
+	
+	private IIntegralDao iidao;
+
+	public IIntegralDao getIidao() {
+		return iidao;
+	}
+
+	public void setIidao(IIntegralDao iidao) {
+		this.iidao = iidao;
+	}
+
+	/**
+	 * 查询积分明细
+	 * yangweihang
+	 * @Date 2018年8月26日 下午3:43:39
+	 * @param wxid
+	 * @return
+	 */
+	@Override
+	public List<Integral> selectByIntegral(String wxid) {
+		return iidao.selectByIntegral(wxid);
+	}
+
+	/**
+	 * 修改星评
+	 * yangweihang
+	 * @Date 2018年8月27日 下午5:05:21
+	 * @param usid
+	 * @return
+	 */
+	@Override
+	public int updatestarrating(Integral i) {
+		return iidao.updatestarrating(i);
+	}
+
+	/**
+	 * 修改留言
+	 * yangweihang
+	 * @Date 2018年8月27日 下午6:43:56
+	 * @param i
+	 * @return
+	 */
+	@Override
+	public int updateleaveword(Integral i) {
+		return iidao.updateleaveword(i);
+	}
+	
+	
+	
+}

@@ -1,0 +1,59 @@
+package com.tly.controller;
+
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.tly.service.IPartnerEquipmentService;
+import com.tly.util.ProductUtil;
+import com.tly.util.StringTools;
+
+/**
+ * 合伙人设备
+ * @ClassName PartnerEquipmentController
+ * @Author yangweihang
+ * @Date 2018年8月26日 下午6:21:19
+ */
+@Controller
+@RequestMapping("/partnerequipment")
+public class PartnerEquipmentController {
+	
+	@Autowired
+	private IPartnerEquipmentService ipes;
+	
+	@Autowired
+	private HttpServletRequest request;
+	
+	/**
+	 * 查询合伙人设备
+	 * yangweihang
+	 * @Date 2018年8月26日 下午6:23:36
+	 * @param pid
+	 * @return
+	 */
+	@RequestMapping("/selectByPe")
+	public String selectByPe(int pid){
+		StringTools st = StringTools.getFactory();
+		List<Map<String, Object>> list = ipes.selectByPe(pid);
+		for(Map<String,Object> m : list){
+			//使用形式
+			if(!st.isNull(m.get("form"))){
+				String form = ProductUtil.proform((int)m.get("form"));
+				m.replace("form", form);
+			}
+			//设备状态
+			if(!st.isNull(m.get("status"))) {
+				String status = ProductUtil.propestatus((int)m.get("status"));
+				m.replace("status", status);
+			}
+		}
+		request.setAttribute("list", list);
+		return "partnerequipment/manage";
+	}
+	
+}

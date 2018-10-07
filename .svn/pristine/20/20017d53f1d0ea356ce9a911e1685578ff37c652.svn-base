@@ -1,0 +1,40 @@
+package com.tly.service.impl;
+
+import java.util.List;
+import java.util.Map;
+
+import com.tly.dao.IEquipmentMaintenanceDao;
+import com.tly.service.IEquipmentMaintenanceService;
+
+/**
+ * 故障设备维修明细
+ * @ClassName EquipmentMaintenanceService
+ * @Author yangweihang
+ * @Date 2018年8月26日 下午11:57:26
+ */
+public class EquipmentMaintenanceService implements IEquipmentMaintenanceService {
+
+	private IEquipmentMaintenanceDao iemdao;
+	
+	public IEquipmentMaintenanceDao getIemdao() {
+		return iemdao;
+	}
+
+	public void setIemdao(IEquipmentMaintenanceDao iemdao) {
+		this.iemdao = iemdao;
+	}
+
+
+	/**
+	 * 查询维修明细
+	 * yangweihang
+	 * @Date 2018年8月26日 下午11:58:00
+	 * @param pid
+	 * @return
+	 */
+	@Override
+	public List<Map<String, Object>> selectByEm() {
+		return iemdao.selectByEm();
+	}
+
+}

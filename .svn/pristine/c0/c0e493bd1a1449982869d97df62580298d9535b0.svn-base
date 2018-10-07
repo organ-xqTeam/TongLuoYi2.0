@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<!-- 设备 -->
+		<typeAlias  alias="equipment" type="com.tly.model.Equipment"/>
+		
+		<!-- 会员 -->
+		<typeAlias  alias="member" type="com.tly.model.Member"/>
+		
+		<!-- 设备子表 -->
+		<typeAlias  alias="EquipmentSublist" type="com.tly.model.EquipmentSublist"/>
+		
+		<!-- 设备出入库明细 -->
+		<typeAlias alias="equipmentinoutstorage" type="com.tly.model.EquipmentInoutstorage"/>
+	</typeAliases>
+	<mappers>
+		<!-- 设备 -->
+		<mapper resource="com/tly/dao/EquipmentMapper.xml"/>
+		
+		<!-- 设备 -->
+		<mapper resource="com/tly/dao/MemberMapper.xml"/>
+		
+		<!-- 设备子表 -->
+		<mapper resource="com/tly/dao/EquipmentSublistMapper.xml"/>
+		
+		<!-- 设备出入库明细 -->
+		<mapper resource="com/tly/dao/EquipmentInoutstorageMapper.xml"/>
+	</mappers>
+</configuration>

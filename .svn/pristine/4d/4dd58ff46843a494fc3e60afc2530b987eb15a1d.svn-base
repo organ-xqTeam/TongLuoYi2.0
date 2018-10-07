@@ -1,0 +1,39 @@
+package com.tly.dao;
+
+import java.util.Map;
+
+import com.tly.model.EquipmentSublist;
+
+/**
+ * @author moxiuchuan
+ * 设备子表dao接口
+ * 15点10分
+ */
+public interface IEquipmentSublistDao {
+
+	/**
+	 * 根据设备码查询该台设备的状态
+	 * @param equipmentnumber
+	 * @return 设备状态
+	 */
+	Integer selectStateByEquipmentnumber(String equipmentnumber);
+	
+	/**
+	 * 新增产品
+	 * yangweihang
+	 * @Date 2018年8月25日 上午11:01:07
+	 * @param es
+	 * @return
+	 */
+	int insertes(EquipmentSublist es);
+	
+	/**
+	 * 查询设备编号
+	 * yangweihang
+	 * @Date 2018年8月25日 上午11:13:30
+	 * @param map
+	 * @return
+	 */
+	EquipmentSublist selectByNumber(Map<String,Object> map);
+	
+}

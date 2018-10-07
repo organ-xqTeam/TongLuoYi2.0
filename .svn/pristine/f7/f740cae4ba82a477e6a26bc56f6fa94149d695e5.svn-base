@@ -1,0 +1,36 @@
+package com.tly.dao.impl;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.mybatis.spring.support.SqlSessionDaoSupport;
+
+import com.tly.dao.IPartneronupLevelDao;
+import com.tly.model.PartneronupLevel;
+
+/**
+ * @author moxiuchuan
+ * 合伙人上下级关系dao接口
+ * 2018年8月26日09:14:48
+ * verson 1.0
+ */
+public class PartneronupLevelDao extends SqlSessionDaoSupport implements IPartneronupLevelDao{
+
+	@Override
+	public Map selectSuper(Integer mid) {
+		// TODO Auto-generated method stub
+		PartneronupLevel pl = getSqlSession().selectOne("com.tly.dao.IPartneronupLevelDao.selectSuper", mid);
+		Map<String,String> map = new HashMap<String,String>();
+		try {
+			map.put("firstOn", pl.getWxid());//该用户上级就是这条数据的微信id
+			map.put("seconedOn", pl.getOnwxid());//二级上线
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return map;
+		}
+		return map;
+	}
+
+}

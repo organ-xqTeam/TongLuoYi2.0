@@ -1,0 +1,17 @@
+package com.tly.dao;
+
+/**
+ * 会员钱包dao接口
+ * @author moxiuchuan
+ * 17点15分
+ */
+public interface IMemberWalletDao {
+
+	/**
+	 * 根据用户微信id查询该用户账户余额
+	 * @param wxid 微信id
+	 * @return 账户余额
+	 */
+	Double selectRemainMoney(String wxid);
+	
+}

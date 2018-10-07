@@ -1,0 +1,39 @@
+package com.tly.util;
+
+/**
+ * 角色类
+ * @author lenovo
+ *
+ */
+public class RoleUtil {
+	
+	private static final int ONE = 1;
+	private static final int TWO = 2;
+	private static final int THREE = 3;
+	private static final int FOUR = 4;
+	
+	/**
+	 * 会员级别
+	 * @param ml
+	 * @return
+	 */
+	public static String memberlevel(int ml){
+		String result = "";
+		switch(ml){
+		case ONE:
+			result = "普通会员";
+			break;
+		case TWO:
+			result = "金牌会员";
+			break;
+		case THREE:
+			result = "钻石会员";
+			break;
+		case FOUR:
+			result = "超级会员";
+			break;
+		}
+		return result;
+	}
+	
+}

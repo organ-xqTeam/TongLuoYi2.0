@@ -1,0 +1,28 @@
+package com.tly.service;
+
+import com.tly.model.Equipment;
+
+/**
+ * 设备
+ * @ClassName IEquipmentService
+ * @Author yangweihang
+ * @Date 2018年8月24日 上午11:34:12
+ */
+public interface IEquipmentService {
+	
+	/**
+	 * 新增
+	 * yangweihang
+	 * @Date 2018年8月24日 上午11:34:51
+	 * @param e
+	 * @return
+	 */
+	public int insert(Equipment e);
+	
+	/**
+	 * 根据设备码查询该设备状态
+	 * @param Equipmentnumber
+	 * @return 设备状态
+	 */
+	Integer selectStateByEquipmentnumber(String Equipmentnumber);
+}

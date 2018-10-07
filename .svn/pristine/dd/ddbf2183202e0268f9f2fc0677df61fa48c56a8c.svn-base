@@ -1,0 +1,17 @@
+package com.tly.util;
+
+/**
+ * @author moxiuchuan
+ * 扫码之后产生的服务
+ * 19点21分
+ */
+public class ScanServer implements Runnable{
+
+	 
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+}

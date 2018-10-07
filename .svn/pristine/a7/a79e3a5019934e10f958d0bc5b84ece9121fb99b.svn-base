@@ -1,0 +1,108 @@
+package com.tly.service.impl;
+
+import java.util.List;
+import java.util.Map;
+
+import com.tly.dao.IPartnerDao;
+import com.tly.dao.IPartneronupLevelDao;
+import com.tly.model.Member;
+import com.tly.model.Partner;
+import com.tly.service.IPartnerService;
+
+/**
+ * 合伙人
+ * @ClassName PartnerService
+ * @Author yangweihang
+ * @Date 2018年8月26日 下午5:19:13
+ */
+public class PartnerService implements IPartnerService {
+	
+	private IPartnerDao ipdao;
+	
+	private IPartneronupLevelDao ilpdao;//合伙人关系dao
+	
+	public IPartneronupLevelDao getIlpdao() {
+		return ilpdao;
+	}
+
+	public void setIlpdao(IPartneronupLevelDao ilpdao) {
+		this.ilpdao = ilpdao;
+	}
+
+	public IPartnerDao getIpdao() {
+		return ipdao;
+	}
+
+	public void setIpdao(IPartnerDao ipdao) {
+		this.ipdao = ipdao;
+	}
+
+	/**
+	 * 合伙人管理
+	 * yangweihang
+	 * @Date 2018年8月26日 下午5:20:19
+	 * @return
+	 */
+	@Override
+	public List<Map<String, Object>> selectByPartner() {
+		return ipdao.selectByPartner();
+	}
+	
+	/**
+	 * 查询一级上线
+	 * yangweihang
+	 * @Date 2018年8月26日 下午3:11:24
+	 * @param wxid
+	 * @return
+	 */
+	@Override
+	public Partner selectonone(String wxid) {
+		return ipdao.selectonone(wxid);
+	}
+
+
+	/**
+	 * 查询二级上线
+	 * yangweihang
+	 * @Date 2018年8月26日 下午3:11:35
+	 * @param wxid
+	 * @return
+	 */
+	@Override
+	public Partner selectontwo(String wxid) {
+		return ipdao.selectontwo(wxid);
+	}
+
+
+	/**
+	 * 查询一级下线
+	 * yangweihang
+	 * @Date 2018年8月26日 下午3:11:46
+	 * @param wxid
+	 * @return
+	 */
+	@Override
+	public List<Partner> selectupone(String wxid) {
+		return ipdao.selectupone(wxid);
+	}
+
+
+	/**
+	 * 查询二级下线
+	 * yangweihang
+	 * @Date 2018年8月26日 下午3:11:59
+	 * @param wxid
+	 * @return
+	 */
+	@Override
+	public List<Partner> selectuptwo(String wxid) {
+		return ipdao.selectuptwo(wxid);
+	}
+
+	@Override
+	public Map<String, String> selectSuper(Integer mid) {
+		// TODO Auto-generated method stub
+		Map map = ilpdao.selectSuper(mid);
+		return map;
+	}
+}

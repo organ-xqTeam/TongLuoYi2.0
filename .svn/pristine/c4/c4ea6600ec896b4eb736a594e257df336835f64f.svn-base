@@ -1,0 +1,36 @@
+package com.tly.dao.impl;
+
+import java.util.List;
+import java.util.Map;
+
+import org.mybatis.spring.support.SqlSessionDaoSupport;
+
+import com.tly.dao.IShopDao;
+import com.tly.model.Shop;
+
+/**
+ * 附近店铺管理
+ * @ClassName ShopDao
+ * @Author yangweihang
+ * @Date 2018年8月26日 下午1:11:24
+ */
+public class ShopDao extends SqlSessionDaoSupport implements IShopDao {
+
+	/**
+	 * 查询店铺
+	 * yangweihang
+	 * @Date 2018年8月26日 下午1:11:37
+	 * @return
+	 */
+	@Override
+	public List<Shop> selectByShop() {
+		return getSqlSession().selectList("com.tly.dao.IShopDao.selectByShop", null);
+	}
+
+	@Override
+	public List<Map> selectNearby(Map map) {
+		// TODO Auto-generated method stub
+		return getSqlSession().selectList("com.tly.dao.IShopDao.selectNearby", map);
+	}
+
+}

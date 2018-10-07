@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 合伙人上下级关系 -->
+<mapper namespace="com.tly.dao.IPartneronupLevelDao">
+
+
+	<resultMap id="map1" type="PartneronupLevel">
+	    <result property="pid" column="pid"/>
+	    <result property="wxid" column="wxid"/>
+	    <result property="onwxid" column="onwxid"/>
+	    <result property="time" column="time"/>
+	</resultMap>
+
+
+	<select id="selectSuper" parameterType="java.lang.Integer" resultMap="map1">
+		SELECT t2.wxid,t2.onwxid FROM partneronuplevel t1,partneronuplevel t2 WHERE t2.wxid = t1.onwxid AND 
+		t1.wxid = (select wxid from member where id = ${_parameter})	
+	</select>
+</mapper>

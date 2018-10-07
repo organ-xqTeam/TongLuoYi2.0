@@ -1,0 +1,52 @@
+package com.tly.controller;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.tly.service.IMemberService;
+
+/**
+ * @author moxiuchuan
+ * 会员控制器
+ * 11点17分
+ */
+@RestController
+@RequestMapping("member")
+public class MemberController {
+	
+	@Autowired
+	private HttpServletRequest request;
+	
+	@Autowired
+	private IMemberService ims;//会员服务层
+	/**
+	 * 根据手机号查询会员id
+	 * @return 存在：会员id 不存在：null
+	 */
+	@RequestMapping("selectOneByPhone")
+	public Integer selectOneByPhone(String phonenum) {
+		
+		Integer mid = ims.selectOneByPhone(phonenum);
+
+		return mid;
+	}
+	
+	/**
+	 * 检查他应该付多少钱
+	 * @return 钱数
+	 */
+	@RequestMapping("selectMoneyByScan")
+	public Double selectMoneyByScan() {
+		//1.判断该设备的状态
+		
+		//2.用户的角色
+		
+		return null;
+	}
+	
+}

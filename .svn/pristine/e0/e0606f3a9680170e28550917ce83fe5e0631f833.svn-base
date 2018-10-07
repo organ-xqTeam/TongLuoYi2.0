@@ -1,0 +1,23 @@
+package com.tly.service;
+
+import java.util.List;
+import java.util.Map;
+
+/**
+ * 合伙人设备
+ * @ClassName IPartnerEquipmentService
+ * @Author yangweihang
+ * @Date 2018年8月26日 下午6:18:19
+ */
+public interface IPartnerEquipmentService {
+	
+	/**
+	 * 查询合伙人设备
+	 * yangweihang
+	 * @Date 2018年8月26日 下午6:17:31
+	 * @param pid
+	 * @return
+	 */
+	List<Map<String,Object>> selectByPe(int pid);
+	
+}

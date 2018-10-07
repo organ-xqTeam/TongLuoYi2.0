@@ -1,0 +1,172 @@
+package com.tly.service.impl;
+
+import java.util.List;
+import java.util.Map;
+
+import com.tly.dao.IFinanceDao;
+import com.tly.model.Finance;
+import com.tly.service.IFinanceService;
+
+/**
+ * 财务管理
+ * @ClassName FinanceService
+ * @Author yangweihang
+ * @Date 2018年8月26日 下午10:14:27
+ */
+public class FinanceService implements IFinanceService {
+
+	private IFinanceDao ifdao; 
+	
+	public IFinanceDao getIfdao() {
+		return ifdao;
+	}
+
+	public void setIfdao(IFinanceDao ifdao) {
+		this.ifdao = ifdao;
+	}
+
+	/**
+	 * 查询钱包明细
+	 * yangweihang
+	 * @Date 2018年8月26日 下午10:15:07
+	 * @param wxid
+	 * @return
+	 */
+	@Override
+	public List<Map<String, Object>> selectByFinance(String wxid) {
+		return ifdao.selectByFinance(wxid);
+	}
+
+	/**
+	 * 查询下线明细
+	 * yangweihang
+	 * @Date 2018年8月26日 下午10:58:24
+	 * @param map
+	 * @return
+	 */
+	@Override
+	public List<Finance> selectByUp(Map<String, Object> map) {
+		return ifdao.selectByUp(map);
+	}
+
+	/**
+	 * 查询平台收入日报
+	 * yangweihang
+	 * @Date 2018年8月27日 上午3:09:47
+	 * @return
+	 */
+	@Override
+	public List<Map<String, Object>> selectrb() {
+		return ifdao.selectrb();
+	}
+
+	/**
+	 * 查询平台收入周报
+	 * yangweihang
+	 * @Date 2018年8月27日 上午3:10:58
+	 * @return
+	 */
+	@Override
+	public List<Map<String, Object>> selectzb() {
+		return ifdao.selectzb();
+	}
+
+	/**
+	 * 查询平台收入月报
+	 * yangweihang
+	 * @Date 2018年8月27日 上午3:11:11
+	 * @return
+	 */
+	@Override
+	public List<Map<String, Object>> selectyb() {
+		return ifdao.selectyb();
+	}
+
+	/**
+	 * 查询平台收入季报
+	 * yangweihang
+	 * @Date 2018年8月27日 上午3:11:11
+	 * @return
+	 */
+	public List<Map<String,Object>> selectjb(){
+		return ifdao.selectjb();
+	}
+	
+	/**
+	 * 查询平台收入半年报
+	 * yangweihang
+	 * @Date 2018年8月27日 上午3:11:24
+	 * @return
+	 */
+	@Override
+	public List<Map<String, Object>> selectbnb() {
+		return ifdao.selectbnb();
+	}
+
+	/**
+	 * 查询平台收入年报
+	 * yangweihang
+	 * @Date 2018年8月27日 上午3:11:36
+	 * @return
+	 */
+	@Override
+	public List<Map<String, Object>> selectnb() {
+		return ifdao.selectnb();
+	}
+
+	/**
+	 * 查询销售明细
+	 * yangweihang
+	 * @Date 2018年8月27日 上午4:11:17
+	 * @return
+	 */
+	@Override
+	public List<Map<String, Object>> selectByXs() {
+		return ifdao.selectByXs();
+	}
+
+	/**
+	 * 押金收入明细
+	 * yangweihang
+	 * @Date 2018年8月27日 上午4:42:26
+	 * @return
+	 */
+	@Override
+	public List<Map<String, Object>> selectByYj() {
+		return ifdao.selectByYj();
+	}
+
+	/**
+	 * 扫码收入分账、提成、公益金、基金明细表
+	 * yangweihang
+	 * @Date 2018年8月27日 上午8:16:31
+	 * @return
+	 */
+	@Override
+	public List<Map<String, Object>> selectfz() {
+		return ifdao.selectfz();
+	}
+
+	/**
+	 * 公益金基金明细
+	 * yangweihang
+	 * @Date 2018年8月27日 上午10:48:23
+	 * @return
+	 */
+	@Override
+	public List<Map<String, Object>> selectByFund() {
+		return ifdao.selectByFund();
+	}
+
+	/**
+	 * 新增财务
+	 * yangweihang
+	 * @Date 2018年8月28日 下午6:05:37
+	 * @param f
+	 * @return
+	 */
+	@Override
+	public int insertfinance(Finance f) {
+		return ifdao.insertfinance(f);
+	}
+}

@@ -1,0 +1,165 @@
+package com.tly.dao.impl;
+
+import java.util.List;
+import java.util.Map;
+
+import org.mybatis.spring.support.SqlSessionDaoSupport;
+
+import com.tly.dao.IFinanceDao;
+import com.tly.model.Finance;
+
+/**
+ * 财务管理
+ * @ClassName FinanceDao
+ * @Author yangweihang
+ * @Date 2018年8月26日 下午10:05:57
+ */
+public class FinanceDao extends SqlSessionDaoSupport implements IFinanceDao {
+
+	/**
+	 * 查询钱包明细
+	 * yangweihang
+	 * @Date 2018年8月26日 下午10:08:32
+	 * @param wxid
+	 * @return
+	 */
+	@Override
+	public List<Map<String, Object>> selectByFinance(String wxid) {
+		return getSqlSession().selectList("com.tly.dao.IFinanceDao.selectByFinance", wxid);
+	}
+
+	/**
+	 * 查询下线明细
+	 * yangweihang
+	 * @Date 2018年8月26日 下午10:57:07
+	 * @param map
+	 * @return
+	 */
+	@Override
+	public List<Finance> selectByUp(Map<String, Object> map) {
+		return getSqlSession().selectList("com.tly.dao.IFinanceDao.selectByUp", map);
+	}
+
+	/**
+	 * 查询平台收入日报
+	 * yangweihang
+	 * @Date 2018年8月27日 上午3:09:47
+	 * @return
+	 */
+	@Override
+	public List<Map<String, Object>> selectrb() {
+		return getSqlSession().selectList("com.tly.dao.IFinanceDao.selectrb", null);
+	}
+
+	/**
+	 * 查询平台收入周报
+	 * yangweihang
+	 * @Date 2018年8月27日 上午3:10:58
+	 * @return
+	 */
+	@Override
+	public List<Map<String, Object>> selectzb() {
+		return getSqlSession().selectList("com.tly.dao.IFinanceDao.selectzb", null);
+	}
+
+	/**
+	 * 查询平台收入月报
+	 * yangweihang
+	 * @Date 2018年8月27日 上午3:11:11
+	 * @return
+	 */
+	@Override
+	public List<Map<String, Object>> selectyb() {
+		return getSqlSession().selectList("com.tly.dao.IFinanceDao.selectyb", null);
+	}
+	
+	/**
+	 * 查询平台收入季报
+	 * yangweihang
+	 * @Date 2018年8月27日 上午3:11:11
+	 * @return
+	 */
+	@Override
+	public List<Map<String, Object>> selectjb() {
+		return getSqlSession().selectList("com.tly.dao.IFinanceDao.selectjb", null);
+	}
+
+	/**
+	 * 查询平台收入半年报
+	 * yangweihang
+	 * @Date 2018年8月27日 上午3:11:24
+	 * @return
+	 */
+	@Override
+	public List<Map<String, Object>> selectbnb() {
+		return getSqlSession().selectList("com.tly.dao.IFinanceDao.selectbnb", null);
+	}
+
+	/**
+	 * 查询平台收入年报
+	 * yangweihang
+	 * @Date 2018年8月27日 上午3:11:36
+	 * @return
+	 */
+	@Override
+	public List<Map<String, Object>> selectnb() {
+		return getSqlSession().selectList("com.tly.dao.IFinanceDao.selectnb", null);
+	}
+
+	/**
+	 * 查询销售明细
+	 * yangweihang
+	 * @Date 2018年8月27日 上午4:09:33
+	 * @return
+	 */
+	@Override
+	public List<Map<String, Object>> selectByXs() {
+		return getSqlSession().selectList("com.tly.dao.IFinanceDao.selectByXs", null);
+	}
+
+	/**
+	 * 押金收入明细
+	 * yangweihang
+	 * @Date 2018年8月27日 上午4:40:15
+	 * @return
+	 */
+	@Override
+	public List<Map<String, Object>> selectByYj() {
+		return getSqlSession().selectList("com.tly.dao.IFinanceDao.selectByYj", null);
+	}
+
+	/**
+	 * 扫码收入分账、提成、公益金、基金明细
+	 * yangweihang
+	 * @Date 2018年8月27日 上午8:15:32
+	 * @return
+	 */
+	@Override
+	public List<Map<String, Object>> selectfz() {
+		return getSqlSession().selectList("com.tly.dao.IFinanceDao.selectfz", null);
+	}
+
+	/**
+	 * 公益金基金明细
+	 * yangweihang
+	 * @Date 2018年8月27日 上午10:47:07
+	 * @return
+	 */
+	@Override
+	public List<Map<String, Object>> selectByFund() {
+		return getSqlSession().selectList("com.tly.dao.IFinanceDao.selectByFund", null);
+	}
+
+	/**
+	 * 新增财务
+	 * yangweihang
+	 * @Date 2018年8月28日 下午6:04:06
+	 * @param f
+	 * @return
+	 */
+	@Override
+	public int insertfinance(Finance f) {
+		return getSqlSession().insert("com.tly.dao.IFinanceDao.insertfinance", f);
+	}
+	
+}

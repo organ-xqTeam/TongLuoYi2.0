@@ -1,0 +1,80 @@
+package com.tly.model;
+
+/**
+ * @author moxiuchuan
+ * 合伙人钱包明细
+ * 11点10分
+ */
+public class Partnerwallet {
+
+	/**
+	 * 1.合伙人钱包id
+	 */
+	private Integer id;
+	
+	/**
+	 * 2.合伙人微信id
+	 */
+	private Integer wxid;
+	
+	/**
+	 * 3.余额
+	 */
+	private Double money;
+	
+	/**
+	 * 4.以体现金额
+	 */
+	private Double withdrawdeposit;
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Integer getWxid() {
+		return wxid;
+	}
+
+	public void setWxid(Integer wxid) {
+		this.wxid = wxid;
+	}
+
+	public Double getMoney() {
+		return money;
+	}
+
+	public void setMoney(Double money) {
+		this.money = money;
+	}
+
+	public Double getWithdrawdeposit() {
+		return withdrawdeposit;
+	}
+
+	public void setWithdrawdeposit(Double withdrawdeposit) {
+		this.withdrawdeposit = withdrawdeposit;
+	}
+
+	@Override
+	public String toString() {
+		return "Partnerwallet [id=" + id + ", wxid=" + wxid + ", money=" + money + ", withdrawdeposit="
+				+ withdrawdeposit + "]";
+	}
+
+	public Partnerwallet(Integer id, Integer wxid, Double money, Double withdrawdeposit) {
+		super();
+		this.id = id;
+		this.wxid = wxid;
+		this.money = money;
+		this.withdrawdeposit = withdrawdeposit;
+	}
+
+	public Partnerwallet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+}

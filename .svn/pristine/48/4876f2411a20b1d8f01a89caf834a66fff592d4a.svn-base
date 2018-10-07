@@ -1,0 +1,40 @@
+package com.tly.service.impl;
+
+import java.util.List;
+
+import com.tly.dao.IShopDao;
+import com.tly.model.Shop;
+import com.tly.service.IShopService;
+
+/**
+ * 店铺管理
+ * @ClassName ShopService
+ * @Author yangweihang
+ * @Date 2018年8月26日 下午1:13:39
+ */
+public class ShopService implements IShopService {
+	
+	private IShopDao isdao;
+
+	public IShopDao getIsdao() {
+		return isdao;
+	}
+
+
+	public void setIsdao(IShopDao isdao) {
+		this.isdao = isdao;
+	}
+
+
+	/**
+	 * 查询店铺
+	 * yangweihang
+	 * @Date 2018年8月26日 下午1:14:09
+	 * @return
+	 */
+	@Override
+	public List<Shop> selectByShop() {
+		return isdao.selectByShop();
+	}
+
+}

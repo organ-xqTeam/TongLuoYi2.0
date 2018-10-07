@@ -1,0 +1,21 @@
+package com.tly.service.impl;
+
+import com.tly.service.IEvaluateService;
+
+/**
+ * 会员评价定时任务
+ * @ClassName EvaluateService
+ * @Author yangweihang
+ * @Date 2018年8月28日 上午9:24:22
+ */
+public class EvaluateService implements IEvaluateService {
+	/**
+	 * 会员评价自动24小时改为可见
+	 * yangweihang
+	 * @Date 2018年8月28日 上午9:25:14
+	 */
+	@Override
+	public void timingupdatevisible() {
+		System.out.println("-------------------------");
+	}
+}

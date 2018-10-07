@@ -1,0 +1,54 @@
+package com.tly.service.impl;
+
+import java.util.List;
+import java.util.Map;
+
+import com.tly.dao.IFinanceDao;
+import com.tly.model.Finance;
+import com.tly.service.IFinanceService;
+
+/**
+ * 财务管理
+ * @ClassName FinanceService
+ * @Author yangweihang
+ * @Date 2018年8月26日 下午10:14:27
+ */
+public class FinanceService implements IFinanceService {
+
+	private IFinanceDao ifdao; 
+	
+	public IFinanceDao getIfdao() {
+		return ifdao;
+	}
+
+	public void setIfdao(IFinanceDao ifdao) {
+		this.ifdao = ifdao;
+	}
+
+	/**
+	 * 查询钱包明细
+	 * yangweihang
+	 * @Date 2018年8月26日 下午10:15:07
+	 * @param wxid
+	 * @return
+	 */
+	@Override
+	public List<Map<String, Object>> selectByFinance(String wxid) {
+		return ifdao.selectByFinance(wxid);
+	}
+
+	/**
+	 * 查询下线明细
+	 * yangweihang
+	 * @Date 2018年8月26日 下午10:58:24
+	 * @param map
+	 * @return
+	 */
+	@Override
+	public List<Finance> selectByUp(Map<String, Object> map) {
+		return ifdao.selectByUp(map);
+	}
+	
+	
+	
+}

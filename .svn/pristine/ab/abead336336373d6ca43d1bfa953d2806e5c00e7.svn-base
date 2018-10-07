@@ -1,0 +1,88 @@
+package com.tly.util;
+
+import java.util.Map;
+
+import org.springframework.stereotype.Component;
+
+import com.tly.model.Commissionreward;
+import com.tly.model.Member;
+import com.tly.service.IMemberService;
+import com.tly.service.IPartnerService;
+
+/**
+ * @author moxiuchuan
+ * 扫码之后产生的服务
+ * 19点21分
+ */
+@Component
+public class ScanServer implements Runnable{
+
+	private IMemberService ims;//会员服务
+	private String wxid;//扫码会员微信id
+	private IPartnerService ips; //合伙人服务
+	private String Equipmentnumber;//被扫码设备编号
+	
+	public ScanServer(IMemberService ims, String wxid, IPartnerService ips, String equipmentnumber) {
+		super();
+		this.ims = ims;
+		this.wxid = wxid;
+		this.ips = ips;
+		this.Equipmentnumber = equipmentnumber;
+	}
+	public ScanServer() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		//提成办法
+		//1.检查其两个上级
+		Member selectonone = ims.selectonone(wxid);
+		Member selectontwo = ims.selectontwo(wxid);
+		//判断他的一级上线是不是该设备租用者(得到该商家的微信id)
+		String wxidshangjia = ips.selectPeoByEquipmentnumber(Equipmentnumber);
+		if (wxid.equals(selectonone.getWxid())) {
+			if (selectontwo == null) {
+				//只有该商家提成
+				
+			}else {
+				
+			}
+		}else {
+			//查询该商家的上下级
+			Member shangjiaOnOne = ims.selectonone(wxidshangjia);
+			Member shangjiaOnTwo = ims.selectontwo(wxidshangjia);
+			if (selectontwo.equals(selectonone.getWxid())) {
+				//b
+				if (shangjiaOnOne != null || shangjiaOnTwo!=null) {
+					if (shangjiaOnOne != null) {
+						
+					}
+					if (shangjiaOnTwo != null) {
+						
+					}
+				}
+			}else{
+				//c
+				if (shangjiaOnOne != null || shangjiaOnTwo!=null) {
+					if (shangjiaOnOne != null) {
+						
+					}
+					if (shangjiaOnTwo != null) {
+						
+					}
+				}
+			}
+		}
+		
+		//Commissionreward moneyByRank1 = ips.selectMoneyByRank(selectonone.getId());
+	}
+	/**
+	 * 提成通用方法
+	 * @return 提成钱数
+	 */
+	private void ticheng(String wxid,Integer identity) {
+		// TODO Auto-generated method stub
+	}
+}

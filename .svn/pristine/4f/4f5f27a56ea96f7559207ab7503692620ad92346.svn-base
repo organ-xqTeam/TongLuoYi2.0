@@ -1,0 +1,32 @@
+package com.tly.dao.impl;
+
+import java.util.List;
+import java.util.Map;
+
+import org.mybatis.spring.support.SqlSessionDaoSupport;
+
+import com.tly.dao.IEquipmentMaintenanceDao;
+
+/**
+ * 故障设备维修明细
+ * @ClassName EquipmentMaintenanceDao
+ * @Author yangweihang
+ * @Date 2018年8月26日 下午11:48:19
+ */
+public class EquipmentMaintenanceDao extends SqlSessionDaoSupport implements IEquipmentMaintenanceDao {
+
+	/**
+	 * 查询维修明细
+	 * yangweihang
+	 * @Date 2018年8月26日 下午11:49:06
+	 * @param pid
+	 * @return
+	 */
+	@Override
+	public List<Map<String, Object>> selectByEm() {
+		return getSqlSession().selectList("com.tly.dao.IEquipmentMaintenanceDao.selectByEm", null);
+	}
+	
+	
+	
+}

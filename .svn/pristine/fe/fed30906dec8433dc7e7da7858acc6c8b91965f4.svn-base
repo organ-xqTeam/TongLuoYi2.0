@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 故障设备维修明细 -->
+<mapper namespace="com.tly.dao.IEquipmentMaintenanceDao">
+	<!-- 查询维修明细 -->
+	<select id="selectByEm" resultType="java.util.HashMap">
+		select e.name as name,es.number as number,s.address as address,p.name as pname,p.wxid as wxid,p.phonenum as phonenum,em.describe as des,em.judge as judge,em.record as record,em.result as result
+		from equipment as e 
+		left join equipmentsublist as es on e.id = es.eid
+		left join partnerequipment as pe on pe.eid = es.id
+		left join partner as p on pe.pid = p.id
+		left join equipmentmaintenance as em on p.id = em.pid
+		left join shop as s on p.id = s.pid
+		where em.emid <![CDATA[ <> ]]> ''
+	</select>
+</mapper>

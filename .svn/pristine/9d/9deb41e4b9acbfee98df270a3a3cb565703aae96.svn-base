@@ -1,0 +1,44 @@
+package com.tly.controller;
+
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.tly.model.Administrator;
+import com.tly.service.IAdministratorService;
+
+/**
+ * 店铺管理员
+ * @ClassName AdministratorController
+ * @Author yangweihang
+ * @Date 2018年8月26日 下午7:18:18
+ */
+@Controller
+@RequestMapping("/administrator")
+public class AdministratorController {
+
+	@Autowired
+	private IAdministratorService ias;
+	
+	@Autowired
+	private HttpServletRequest request;
+	
+	/**
+	 * 查询店铺管理员
+	 * yangweihang
+	 * @Date 2018年8月26日 下午7:20:50
+	 * @param pid
+	 * @return
+	 */
+	@RequestMapping("/selectByA")
+	public String selectByA(int pid){
+		List<Administrator> list = ias.selectByA(pid);
+		request.setAttribute("list", list);
+		return "administrator/manage";
+	}
+	
+}

@@ -1,0 +1,37 @@
+package com.tly.dao;
+
+import java.util.List;
+import java.util.Map;
+
+/**
+ * 合伙人设备对应
+ * @ClassName IPartnerEquipmentDao
+ * @Author yangweihang
+ * @Date 2018年8月26日 下午6:09:19
+ */
+public interface IPartnerEquipmentDao {
+	
+	/**
+	 * 查询合伙人设备
+	 * yangweihang
+	 * @Date 2018年8月26日 下午6:17:31
+	 * @param pid
+	 * @return
+	 */
+	List<Map<String,Object>> selectByPe(int pid);
+
+	/**
+	 * 查询该设备是租用的还是购买的
+	 * @param equipmentnumber 设备编号 
+	 * @return 1：设备租用 2。设备购买
+	 */
+	Integer selectEquipmentForm(String equipmentnumber);
+
+	/**
+	 * 根据设备子表id查询设备的扫码价格
+	 * @param eid 设备子表id
+	 * @return 扫码价格
+	 */
+	Double selectSmoneyByEid(Integer eid);
+	
+}

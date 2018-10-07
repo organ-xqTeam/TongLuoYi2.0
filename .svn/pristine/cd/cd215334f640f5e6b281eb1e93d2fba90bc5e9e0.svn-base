@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 设备 -->
+<mapper namespace="com.tly.dao.IEquipmentDao">
+	<!-- 新增 -->
+	<insert id="insert" parameterType="com.tly.model.Equipment">
+		insert into equipment(name,type,cashpledge,price) values(#{name},#{type},#{cashpledge},#{price})
+	</insert>
+	<!-- 查询对象 -->
+	<select id="selectByCondition" parameterType="java.util.HashMap" resultType="com.tly.model.Equipment">
+		select * from equipment
+		<where>
+			<!-- 按设备型号查询 -->
+			<if test="type != null and type != ''">
+				and type = #{type}
+			</if>
+			<!-- 按设备名称查询 -->
+			<if test="name!= null and name != ''">
+				and name = #{name}
+			</if>
+		</where>
+	</select>
+	<!-- 查询设备名称 -->
+	<select id="selectEByName" resultType="java.lang.String">
+		select distinct name from equipment
+	</select>
+</mapper>
